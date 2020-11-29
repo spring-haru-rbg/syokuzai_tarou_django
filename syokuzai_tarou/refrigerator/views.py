@@ -30,7 +30,7 @@ def food_register(request):
 def food_change_select(request):
     params = {
         'title' : '食材変更',
-        'text' : '',
+        'text' : '変更ページ',
         'goto_refrigerator' : 'refrigerator',
         'goto_refrigerator_text' : '食材一覧',
 
