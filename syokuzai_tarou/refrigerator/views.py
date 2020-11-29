@@ -11,6 +11,8 @@ def refrigerator(request):
         'goto_refrigerator_text' : '食材一覧',
         'goto_register' : 'food_register',
         'goto_register_text' : '登録',
+        'goto_change_select' : 'food_change_select',
+        'goto_change_select_text' : '変更',
 
     }
     return render(request, 'refrigerator/refrigerator.html',params)
@@ -24,3 +26,13 @@ def food_register(request):
 
     }
     return render(request, 'refrigerator/food_register.html',params)
+
+def food_change_select(request):
+    params = {
+        'title' : '食材変更',
+        'text' : '',
+        'goto_refrigerator' : 'refrigerator',
+        'goto_refrigerator_text' : '食材一覧',
+
+    }
+    return render(request, 'refrigerator/food_change_select.html',params)
