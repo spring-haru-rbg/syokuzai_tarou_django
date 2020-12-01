@@ -17,11 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 import refrigerator.views as refrigerator
+import accounts.views as accounts
 from django.conf.urls import include #追加
 
 
 urlpatterns = [
     path('admin/',admin.site.urls),
-    path('refrigerator/',include('refrigerator.urls'))
+    path('refrigerator/',include('refrigerator.urls')),
+    path('accounts/',include('accounts.urls')),
+    path('accounts/',include('django.contrib.auth.urls'))
 ]
 

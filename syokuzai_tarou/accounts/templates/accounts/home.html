@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <meta charset="utf-8" />
+    <title>ホーム画面</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/style.css' %}" />
+</head>
+ 
+<body>
+    <h1>ホーム画面</h1>
+ 
+    <p>こんにちは{{ user.username }}さん</p>
+ 
+    <p><a href="{% url 'logout' %}">ログアウト</a></p>
+</body>
+ 
+</html>
