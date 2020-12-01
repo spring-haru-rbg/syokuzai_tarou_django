@@ -4,14 +4,12 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/style.css' %}" />
-    <title>{{ title }}</title>
+    <title>hello</title>
 </head>
 <body>
     <h1>{{ title }}</h1>
+    
     <a href="{% url goto_refrigerator %}">{{ goto_refrigerator_text }}</a>
-    <a href="{% url goto_register %}">{{ goto_register_text }}</a>
-    <a href="{% url goto_change_select %}">{{ goto_change_select_text }}</a>
-    <a href="{% url goto_search %}">{{ goto_search_text }}</a>
     <p>{{ text }}</p>
 </body>
 </html>
