@@ -22,7 +22,7 @@ def refrigerator(request):
 def food_register(request):
     params = {
         'title' : '食材登録',
-        'text' : 'aiueo',
+        'text' : '食材登録',
         'goto_refrigerator' : 'refrigerator',
         'goto_refrigerator_text' : '食材一覧',
         'goto_register' : 'food_register',
