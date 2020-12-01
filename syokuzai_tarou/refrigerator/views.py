@@ -18,7 +18,7 @@ def refrigerator(request):
 def food_register(request):
     params = {
         'title' : '食材登録',
-        'text' : '',
+        'text' : 'kakikukeko',
         'goto_refrigerator' : 'refrigerator',
         'goto_refrigerator_text' : '食材一覧',
 
