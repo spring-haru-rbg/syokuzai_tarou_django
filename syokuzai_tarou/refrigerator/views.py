@@ -6,7 +6,7 @@ from django.http import HttpResponse
 def refrigerator(request):
     params = {
         'title' : '食材残さないよ太郎',
-        'text' : 'レシピを表示するときは使いたい食材にチェックを入れてレシピ表示ボタンを押してください',
+        'text' : 'レシピを表示する際に使いたい食材にチェックを入れてレシピ表示ボタンを押してください',
         'goto_refrigerator' : 'refrigerator',
         'goto_refrigerator_text' : '食材一覧',
         'goto_register' : 'food_register',
@@ -15,7 +15,7 @@ def refrigerator(request):
         'goto_change_select_text' : '変更',
         'goto_search' : 'food_search',
         'goto_search_text' : '検索',
-
+        
     }
     return render(request, 'refrigerator/refrigerator.html',params)
 
