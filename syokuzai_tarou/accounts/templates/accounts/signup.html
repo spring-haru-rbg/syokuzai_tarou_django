@@ -5,12 +5,13 @@
 <head>
   <meta charset="UTF-8">
   <title>SIGN UP</title>
-  <link rel="stylesheet" href="{% static 'accounts/css/style.css' %}" />
+
+  <link rel="stylesheet" href="{% static 'refrigerator/css/style.css' %}" />
   
 </head>
 <body>
   <header class="header">
-    <h2 class="head">SIGN UP</h2>
+    <h1 class="head">SIGN UP</h1>
 
     <nav class="global-nav">
       <ul>
@@ -23,7 +24,7 @@
   <div class="wrapper clearfix">
     <main class="main">
 
-
+     
         <p style="margin:20px;">
       {% block content %}
       <form action="" method="POST">
@@ -37,7 +38,7 @@
         <p> {{ form.password2.label_tag }}
         {{ form.password2 }}</p>
           <p style="margin:20px;">
-          <p>パスワードはあまり他の個人情報と似てはいけません。</p>
+          <p>パスワードは他の個人情報と似てはいけません。</p>
            <p style="margin:20px;">
             <p>パスワードは8文字以上にする必要があります。</p>
              <p style="margin:20px;">
