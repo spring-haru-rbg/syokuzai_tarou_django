@@ -17,6 +17,18 @@
     <a href="{% url goto_recipe_select %}">{{ goto_recipe_select_text }}</a>
     <a href="{% url goto_delete %}">{{ goto_delete_text }}</a>
     <p>{{ text }}</p>
+
+    <table>
+        <form action="{% url 'food_register' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_table }}
+            <tr>
+                <td></td>
+                <td><input type="submit" value="登録"></td>
+            </tr>
+        </form>
+    </table>
+
 </body>
 
 </html>
