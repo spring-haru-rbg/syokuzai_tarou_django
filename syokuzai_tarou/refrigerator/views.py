@@ -83,7 +83,7 @@ def food_search(request):
     }
     return render(request, 'refrigerator/food_search.html',params)
 
-    def recipe_select(request):
+def recipe_select(request):
     params = {
         'title' : 'レシピ表示',
         'text' : 'レシピ表示ページ',
