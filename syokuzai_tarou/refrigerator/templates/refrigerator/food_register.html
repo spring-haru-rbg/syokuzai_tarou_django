@@ -14,5 +14,17 @@
     <a href="{% url goto_change_select %}">{{ goto_change_select_text }}</a>
     <a href="{% url goto_search %}">{{ goto_search_text }}</a>
     <p>{{ text }}</p>
+
+    <table>
+        <form action="{% url 'food_register' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_table }}
+            <tr>
+                <td></td>
+                <td><input type="submit" value="登録"></td>
+            </tr>
+        </form>
+    </table>
+
 </body>
 </html>

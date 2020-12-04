@@ -13,5 +13,18 @@
     <a href="{% url goto_change_select %}">{{ goto_change_select_text }}</a>
     <a href="{% url goto_search %}">{{ goto_search_text }}</a>
     <p>{{ text }}</p>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>FOODNAME</th>
+        </tr>
+        {% for item in data %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.foodName }}</td>
+            </tr>
+        {% endfor %}
+    </table>
 </body>
 </html>

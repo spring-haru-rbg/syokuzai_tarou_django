@@ -1,9 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from .forms import FoodForm
+from .models import Food
+from django.shortcuts import redirect
+
 # Create your views here.
 
 def refrigerator(request):
+    data = Food.objects.all()
     params = {
         'title' : '食材残さないよ太郎',
         'text' : 'レシピを表示する際に使いたい食材にチェックを入れてレシピ表示ボタンを押してください',
@@ -16,6 +21,7 @@ def refrigerator(request):
         'goto_search' : 'food_search',
         'goto_search_text' : '検索',
         
+        'data' : data,
     }
     return render(request, 'refrigerator/refrigerator.html',params)
 
@@ -32,7 +38,13 @@ def food_register(request):
         'goto_search' : 'food_search',
         'goto_search_text' : '検索',
 
+        'form' : FoodForm(), # 1204追加
     }
+    if request.method == 'POST':
+        foodName = request.POST['foodName']
+        food = FoodForm(foodName=foodName)
+        food.save()
+        return redirect(to='refrigerator')
     return render(request, 'refrigerator/food_register.html',params)
 
 def food_change_select(request):
