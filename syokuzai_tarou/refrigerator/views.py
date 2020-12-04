@@ -41,10 +41,10 @@ def food_register(request):
         'form' : FoodForm(), # 1204追加
     }
     if request.method == 'POST':
-        foodName = request.POST['foodName']
-        food = FoodForm(foodName=foodName)
+        obj = Food()
+        food = FoodForm(request.POST, instance=obj)
         food.save()
-        return redirect(to='refrigerator')
+        return redirect(to='/refrigerator')
     return render(request, 'refrigerator/food_register.html',params)
 
 def food_change_select(request):
