@@ -15,6 +15,10 @@ def refrigerator(request):
         'goto_change_select_text' : '変更',
         'goto_search' : 'food_search',
         'goto_search_text' : '検索',
+        'goto_recipe_select' : 'recipe_select',
+        'goto_recipe_select_text' : 'レシピ表示',
+        'goto_delete' : 'food_delete',
+        'goto_delete_text' : '削除',
         
     }
     return render(request, 'refrigerator/refrigerator.html',params)
@@ -31,6 +35,10 @@ def food_register(request):
         'goto_change_select_text' : '変更',
         'goto_search' : 'food_search',
         'goto_search_text' : '検索',
+        'goto_recipe_select' : 'recipe_select',
+        'goto_recipe_select_text' : 'レシピ表示',
+        'goto_delete' : 'food_delete',
+        'goto_delete_text' : '削除',
 
     }
     return render(request, 'refrigerator/food_register.html',params)
@@ -47,6 +55,10 @@ def food_change_select(request):
         'goto_change_select_text' : '変更',
         'goto_search' : 'food_search',
         'goto_search_text' : '検索',
+        'goto_recipe_select' : 'recipe_select',
+        'goto_recipe_select_text' : 'レシピ表示',
+        'goto_delete' : 'food_delete',
+        'goto_delete_text' : '削除',
 
     }
     return render(request, 'refrigerator/food_change_select.html',params)
@@ -63,7 +75,50 @@ def food_search(request):
         'goto_change_select_text' : '変更',
         'goto_search' : 'food_search',
         'goto_search_text' : '検索',
+        'goto_recipe_select' : 'recipe_select',
+        'goto_recipe_select_text' : 'レシピ表示',
+        'goto_delete' : 'food_delete',
+        'goto_delete_text' : '削除',
 
     }
     return render(request, 'refrigerator/food_search.html',params)
+
+def recipe_select(request):
+    params = {
+        'title' : 'レシピ表示',
+        'text' : 'レシピ表示ページ',
+        'goto_refrigerator' : 'refrigerator',
+        'goto_refrigerator_text' : '食材一覧',
+        'goto_register' : 'food_register',
+        'goto_register_text' : '登録',
+        'goto_change_select' : 'food_change_select',
+        'goto_change_select_text' : '変更',
+        'goto_search' : 'food_search',
+        'goto_search_text' : '検索',
+        'goto_recipe_select' : 'recipe_select',
+        'goto_recipe_select_text' : 'レシピ表示',
+        'goto_delete' : 'food_delete',
+        'goto_delete_text' : '削除',
+    }
+    return render(request, 'refrigerator/recipe_select.html',params)
+
+def food_delete(request):
+    params = {
+        'title' : '削除',
+        'text' : '削除ページ',
+        'goto_refrigerator' : 'refrigerator',
+        'goto_refrigerator_text' : '食材一覧',
+        'goto_register' : 'food_register',
+        'goto_register_text' : '登録',
+        'goto_change_select' : 'food_change_select',
+        'goto_change_select_text' : '変更',
+        'goto_search' : 'food_search',
+        'goto_search_text' : '検索',
+        'goto_recipe_select' : 'recipe_select',
+        'goto_recipe_select_text' : 'レシピ表示',
+        'goto_delete' : 'food_delete',
+        'goto_delete_text' : '削除',
+    }
+    return render(request, 'refrigerator/food_delete.html',params)
+
 
