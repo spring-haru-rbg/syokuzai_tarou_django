@@ -3,7 +3,7 @@ from . import views #追加
 
 
 urlpatterns = [
-    #path('',views.index , name = 'index'),
+    path('',views.index , name = 'index'),
     path('home/',views.home , name = 'home'),
     path('signup/', views.SignUp.as_view(), name='signup'),
     path('password_change/', views.PasswordChange.as_view(), name='password_change'),
