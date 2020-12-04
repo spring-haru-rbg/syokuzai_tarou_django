@@ -1,21 +1,38 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
- 
+
 <head>
-    <meta charset="utf-8" />
-    <title>ログインフォーム画面</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/style.css' %}" />
+    <meta charset="UTF-8">
+    <title>LOGIN</title>
+    <link rel="stylesheet" href="{% static 'refrigerator/css/reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'refrigerator/css/style.css' %}" />
 </head>
- 
+
+
 <body>
-    <h1>ログインフォーム画面</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">ログイン</button>
-    </form>
-    <p><a href="{% url 'signup' %}">新規作成</a></p>
+    <header class="header">
+        <h1 class="logo">食材残さないよ太郎</h1>
+    </header>
+
+
+    <div class="wrapper">
+        <main class="main">
+            <h1>LOGIN</h1>
+            <form method="post">
+                {% csrf_token %}
+                <p>ユーザー名</p>
+                <p>{{ form.username }}</p>
+                <p>パスワード</p>
+                <p>{{ form.password }}</p>
+                <button type="submit">ログイン</button>
+            </form>
+            <button><a href="{% url 'signup' %}">新規作成</a></button>
+        </main>
+    </div>
+    <footer class="footer">
+        <p class="copyright">Copyright @ 2020 syokuzai_tarou</p>
+    </footer>
 </body>
- 
+
 </html>

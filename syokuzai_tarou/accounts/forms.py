@@ -9,8 +9,6 @@ class RegisterForm(UserCreationForm):
  
   # 入力を必須にするため、required=Trueで上書き
   username = forms.CharField(required=True)
-  game_status = forms.IntegerField(required=False)
- 
  
   class Meta:
     model = CustomUser

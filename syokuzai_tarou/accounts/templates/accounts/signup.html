@@ -2,58 +2,56 @@
 
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-  <meta charset="UTF-8">
-  <title>SIGN UP</title>
-
-  <link rel="stylesheet" href="{% static 'refrigerator/css/style.css' %}" />
-  
+    <meta charset="UTF-8">
+    <title>SIGN UP</title>
+    <link rel="stylesheet" href="{% static 'refrigerator/css/reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'refrigerator/css/style.css' %}" />
 </head>
+
 <body>
-  <header class="header">
-    <h1 class="head">SIGN UP</h1>
+    <header class="header">
+        <h1 class="logo">食材残さないよ太郎</h1>
+        <nav class="global-nav">
+            <ul>
+                <li class="nav-item active"><a href="{% url 'home' %}">HOME</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <nav class="global-nav">
-      <ul>
-        <li class="nav-item active"><a href="{% url 'home' %}">HOME</a></li>
-    
-      </ul>
-    </nav>
+    <div class="wrapper">
+        <main class="main">
+            <h1>新規登録</h1>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <p>
+                    {{ form.username }}</p>
+                <p style="margin:20px;">
+                    <p>
+                        {{ form.password1 }}</p>
+                    <p style="margin:20px;">
+                        <p>
+                            {{ form.password2 }}</p>
+                        <p style="margin:20px;">
+                            <p>パスワードは他の個人情報と似てはいけません。</p>
+                            <p style="margin:20px;">
+                                <p>パスワードは8文字以上にする必要があります。</p>
+                                <p style="margin:20px;">
+                                    <p>パスワードは、一般的に使用されるパスワードにすることはできません。</p>
+                                    <p style="margin:20px;">
+                                        <p>パスワードを完全に数字のみにすることはできません。</p>
+                                        <p style="margin:20px;">
+                                            <button type="submit">Sign up</button>
 
-  </header>
-  <div class="wrapper clearfix">
-    <main class="main">
+            </form>
 
-     
-        <p style="margin:20px;">
-      {% block content %}
-      <form action="" method="POST">
-    {% csrf_token %}
-   <p> {{ form.username.label_tag }}
-        {{ form.username }}</p>
-          <p style="margin:20px;">
-       <p> {{ form.password1.label_tag }}
-        {{ form.password1 }}</p>
-          <p style="margin:20px;">
-        <p> {{ form.password2.label_tag }}
-        {{ form.password2 }}</p>
-          <p style="margin:20px;">
-          <p>パスワードは他の個人情報と似てはいけません。</p>
-           <p style="margin:20px;">
-            <p>パスワードは8文字以上にする必要があります。</p>
-             <p style="margin:20px;">
-            <p>パスワードは、一般的に使用されるパスワードにすることはできません。</p>
-             <p style="margin:20px;">
-            <p>パスワードを完全に数字のみにすることはできません。</p>
-             <p style="margin:20px;">
-    <button type="submit">Sign up</button>
-    {% endblock %}
+        </main>
+    </div>
+    <footer class="footer">
+        <p class="copyright">Copyright @ 2020 syokuzai_tarou</p>
+    </footer>
 
-  </form>
-      
-    </main>
-    
-  </div>
-  
 </body>
+
 </html>
