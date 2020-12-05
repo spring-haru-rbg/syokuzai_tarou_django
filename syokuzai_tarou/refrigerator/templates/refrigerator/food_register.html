@@ -9,15 +9,24 @@
 </head>
 
 <body>
-    <h1>{{ title }}</h1>
-    <a href="{% url goto_refrigerator %}">{{ goto_refrigerator_text }}</a>
-    <a href="{% url goto_register %}">{{ goto_register_text }}</a>
-    <a href="{% url goto_change_select %}">{{ goto_change_select_text }}</a>
-    <a href="{% url goto_search %}">{{ goto_search_text }}</a>
-    <a href="{% url goto_recipe_select %}">{{ goto_recipe_select_text }}</a>
-    <a href="{% url goto_delete %}">{{ goto_delete_text }}</a>
-    <p>{{ text }}</p>
-
+    <header class="header">
+        <h1 class="logo">食材残さないよ太郎</h1>
+        <nav class="global-nav">
+             <ul>
+                <li class="nav-item active"><a href="{% url goto_refrigerator %}">{{ goto_refrigerator_text }}</a></li>
+                <li class="nav-item"><a href="{% url goto_register %}">{{ goto_register_text }}</a></li>
+                <li class="nav-item"><a href="{% url goto_change_select %}">{{ goto_change_select_text }}</a></li>
+                <li class="nav-item"> <a href="{% url goto_search %}">{{ goto_search_text }}</a></li>
+                <li class="nav-item"><a href="{% url goto_recipe_select %}">{{ goto_recipe_select_text }}</a></li>
+                <li class="nav-item"><a href="{% url goto_delete %}">{{ goto_delete_text }}</a></li>
+                <li class="nav-item"><a href="{% url goto_change %}">{{ goto_change_text }}</a></li>
+            </ul>
+        </nav>
+    
+</header>
+<div class="wrapper">
+   <main class="main">
+    <a>食材登録ページ</a>
     <table>
         <form action="{% url 'food_register' %}" method="post">
             {% csrf_token %}
@@ -28,7 +37,11 @@
             </tr>
         </form>
     </table>
-
+</main>
+</div>
+<footer class="footer">
+     <p class="copyright">Copyright @ 2020 syokuzai_tarou</p>
+</footer>
 </body>
 
 </html>
