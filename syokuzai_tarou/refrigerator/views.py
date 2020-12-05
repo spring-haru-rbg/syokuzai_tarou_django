@@ -12,6 +12,7 @@ def refrigerator(request):
     params = {
         'title' : '食材残さないよ太郎',
         'text' : 'レシピを表示する際に使いたい食材にチェックを入れてレシピ表示ボタンを押してください',
+       
         'goto_refrigerator' : 'refrigerator',
         'goto_refrigerator_text' : '食材一覧',
         'goto_register' : 'food_register',
