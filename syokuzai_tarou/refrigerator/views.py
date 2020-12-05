@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .forms import FoodForm
-from .models import Food
+#from .forms import FoodForm
+#from .models import Food
+from .forms import *
+from .models import *
 from django.shortcuts import redirect
 
 # Create your views here.
@@ -57,6 +59,7 @@ def food_register(request):
     return render(request, 'refrigerator/food_register.html',params)
 
 def food_change_select(request):
+    data = Food.objects.all()
     params = {
         'title' : '食材変更',
         'text' : '変更ページ',
@@ -72,8 +75,10 @@ def food_change_select(request):
         'goto_recipe_select_text' : 'レシピ表示',
         'goto_delete' : 'food_delete',
         'goto_delete_text' : '削除',
-        'goto_change' : 'food_change',
-        'goto_change_text' : '食材変更',
+        #'goto_change' : 'food_change', #ボタン遷移
+        #'goto_change_text' : '食材変更', #ボタン遷移
+
+        'data' : data,
 
     }
     return render(request, 'refrigerator/food_change_select.html',params)
@@ -165,6 +170,7 @@ def recipe(request):
     return render(request, 'refrigerator/recipe.html',params)
 
 def food_delete(request):
+    data = Food.objects.all()
     params = {
         'title' : '削除',
         'text' : '削除ページ',
@@ -182,6 +188,8 @@ def food_delete(request):
         'goto_delete_text' : '削除',
         'goto_delete_refrigerator' : 'refrigerator',
         'goto_delete_refrigerator_text' : '食材削除',
+
+        'data' : data,
     }
     return render(request, 'refrigerator/food_delete.html',params)
 
