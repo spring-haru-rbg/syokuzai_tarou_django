@@ -22,6 +22,11 @@
                 <li class="nav-item"><a href="{% url goto_change %}">{{ goto_change_text }}</a></li>
             </ul>
         </nav>
+    
+</header>
+<div class="wrapper">
+   <main class="main">
+    <a>食材登録ページ</a>
     <table>
         <form action="{% url 'food_register' %}" method="post">
             {% csrf_token %}
@@ -32,10 +37,6 @@
             </tr>
         </form>
     </table>
-</header>
-<div class="wrapper">
-   <main class="main">
-    <a>食材登録ページ</a>
 </main>
 </div>
 <footer class="footer">
