@@ -1,11 +1,13 @@
 {% load static %}
 <!doctype html>
 <html lang="ja">
+
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/style.css' %}" />
     <title>{{ title }}</title>
 </head>
+
 <body>
     <h1>{{ title }}</h1>
     <td></td>
@@ -17,4 +19,5 @@
     <a href="{% url goto_delete %}">{{ goto_delete_text }}</a>
     <p>{{ text }}</p>
 </body>
+
 </html>
