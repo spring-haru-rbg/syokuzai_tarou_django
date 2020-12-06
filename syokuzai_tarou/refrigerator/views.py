@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+#from .forms import FoodForm
+#from .models import Food
 from .forms import *
 from .models import *
 from django.shortcuts import redirect
