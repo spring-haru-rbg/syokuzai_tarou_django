@@ -2,7 +2,6 @@ from django.db import models
 
 # Create your models here.
 
-<<<<<<< HEAD
 # Foodクラス
 class Food(models.Model):
     foodName = models.CharField(max_length=20) #食材名
@@ -19,12 +18,3 @@ class FoodSet(models.Model):
         null=True,
     )
     foodGram = models.IntegerField(default=0)
-=======
-#Foodクラス
-class Food(models.Model):
-    foodName = models.CharField(max_length=20) #食材名
-
-#FoodSetクラス
-#class FoodSet(models.Model):
-    #foodGram = models.IntegerField(max_length=10) #数量
->>>>>>> master

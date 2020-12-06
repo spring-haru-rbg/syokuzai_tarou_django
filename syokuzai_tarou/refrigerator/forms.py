@@ -1,10 +1,7 @@
 from django import forms
 #from .models import Food
 from .models import *
-<<<<<<< HEAD
 import bootstrap_datepicker_plus as datetimepicker
-=======
->>>>>>> master
 
 #class FoodForm(forms.Form):
 #    foodName = forms.CharField(label='foodName')
@@ -14,7 +11,6 @@ class FoodForm(forms.ModelForm):
         model = Food
         fields = ['foodName']
 
-<<<<<<< HEAD
 class FoodSetForm(forms.ModelForm):
     class Meta:
         model = FoodSet
@@ -29,5 +25,3 @@ class FoodSetForm(forms.ModelForm):
                 }
             ),
         }
-=======
->>>>>>> master
