@@ -9,4 +9,3 @@ class FoodForm(forms.ModelForm):
     class Meta:
         model = Food
         fields = ['foodName']
-

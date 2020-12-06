@@ -194,4 +194,15 @@ def food_delete(request):
     return render(request, 'refrigerator/food_delete.html',params)
 
 
+def calender(request):
+    params = {
+        'form_food' : FoodForm(),
+        'form_foodset' : FoodSetForm(),
+    }
+    if request.method == 'POST':
+        obj = FoodSet()
+        foodset = FoodSetForm(request.POST, instance=obj)
+        foodset.save()
+        return redirect(to='/refrigerator/calender')
 
+    return render(request, 'refrigerator/calender.html',params)
