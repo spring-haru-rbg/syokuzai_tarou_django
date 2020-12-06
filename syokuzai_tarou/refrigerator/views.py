@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .forms import FoodForm
-from .models import Food
+from .forms import *
+from .models import *
 from django.shortcuts import redirect
 
 # Create your views here.
@@ -186,4 +186,15 @@ def food_delete(request):
     return render(request, 'refrigerator/food_delete.html',params)
 
 
+def calender(request):
+    params = {
+        'form_food' : FoodForm(),
+        'form_foodset' : FoodSetForm(),
+    }
+    if request.method == 'POST':
+        obj = FoodSet()
+        foodset = FoodSetForm(request.POST, instance=obj)
+        foodset.save()
+        return redirect(to='/refrigerator/calender')
 
+    return render(request, 'refrigerator/calender.html',params)
