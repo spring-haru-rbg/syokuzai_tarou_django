@@ -13,8 +13,5 @@ urlpatterns = [
     path('food_delete',views.food_delete , name = 'food_delete'),
     path('food_change',views.food_change , name = 'food_change'),
     path('resipe',views.recipe , name = 'recipe'),
-    path('calender',views.calender, name='calender')
-   
-
-
+    
 ]
