@@ -31,15 +31,13 @@
                 <th>番号</th>
                 <th>食材名</th>
             </tr>
-           
-            <tr>
-
-                {% for radio in form.select %}
-                <td>{{ form.select.label }}</td>
-                <td>{{ radio.tag }}</td>
-  
-                   {% endfor %}
-              </tr>
+            {% for item in data %}
+                <tr>
+                    <td><input type="radio" value="change"></td>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.foodName }}</td>
+                </tr>
+            {% endfor %}
         </table>
         {% csrf_token %}
         <input type="submit" value="食材変更">
