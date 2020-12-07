@@ -7,7 +7,14 @@ from .forms import *
 from .models import *
 from django.shortcuts import redirect
 
+from django import forms
+from django.shortcuts import redirect, render
+
+
 # Create your views here.
+
+
+
 
 def refrigerator(request):
     data = Food.objects.all()
@@ -79,6 +86,8 @@ def food_change_select(request):
         #'goto_change_text' : '食材変更', #ボタン遷移
 
         'data' : data,
+
+        'form' : SelectForm(),
 
     }
     return render(request, 'refrigerator/food_change_select.html',params)
@@ -190,6 +199,8 @@ def food_delete(request):
         'goto_delete_refrigerator_text' : '食材削除',
 
         'data' : data,
+
+        
     }
     return render(request, 'refrigerator/food_delete.html',params)
 
