@@ -1,6 +1,7 @@
 #from django import forms
 from .models import Food
 from .models import *
+import bootstrap_datepicker_plus as datetimepicker
 <<<<<<< HEAD
 #from django.contrib.admin import widgets
 
@@ -10,7 +11,7 @@ import os
 from . import models
 
 =======
-import bootstrap_datepicker_plus as datetimepicker
+#import bootstrap_datepicker_plus as datetimepicker
 >>>>>>> master
 
 #class FoodForm(forms.Form):
