@@ -7,9 +7,7 @@ from django.db import models
 class Food(models.Model):
     foodName = models.CharField(max_length=20) #食材名
 
-<<<<<<< HEAD
 #FoodSetクラス
-=======
     def __str__(self):
         return self.foodName
 
@@ -24,4 +22,3 @@ class FoodSet(models.Model):
     foodGram = models.IntegerField(default=0)
     def __str__(self):
         return str(self.food)  + " [ " + str(self.limitRegister) + " ] " + str(self.foodGram)
->>>>>>> master

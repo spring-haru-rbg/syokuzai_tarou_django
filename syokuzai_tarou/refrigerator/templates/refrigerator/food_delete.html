@@ -24,16 +24,15 @@
 <div class="wrapper">
    <main class="main">
     <a>食材削除ページ</a>
-    <form action="" method="POST">
+    
         <table>
             <tr>
                 <th></th>
-                <th>番号</th>
                 <th>食材名</th>
             </tr>
             {% for item in data %}
                 <tr>
-                    <td><input type="checkbox" value="delete"></td>
+                    <td><input type="checkbox" value="delete" id=item.id></td>
                     <td>{{ item.id }}</td>
                     <td>{{ item.foodName }}</td>
                 </tr>
@@ -41,7 +40,7 @@
         </table>
         {% csrf_token %}
         <input type="submit" value="食材削除">
-    </form>
+    
 </main>
 </div>
 <footer class="footer">
