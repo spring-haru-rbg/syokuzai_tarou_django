@@ -178,26 +178,39 @@ def recipe(request):
 
 def food_delete(request):
     data = Food.objects.all()
-    foods = Food.objects.all()
+    foods = Refrigerator.objects.all()
     #POST送信時の処理
-    if request.method == 'POST':
+    if (request.method == 'POST'):
      #Foodsのチェック更新時の処理
-     if request.POST['mode'] == '__foods_form__':
-        #チェックしたFoodsを取得
-        self_fds = request.POST.getlist('foods')
-        sel_foods = Food.objects.all()
-        fds = Food.objects.all()
-        #vlist = []
-        #for item in fds:
-         #   item.group = group_obj
-         #   item.save()
-         #   vlist.append(item.foodName)
-        #フォームの用意
-        foodsform = FoodsForm(request.foodName,foods=foods,vals=vlist)
+        
+        #foods.delete()
+        checks_value = request.POST.getlist('foods')
+        for item in checks_value:
+            delete_data = Refrigerator.objects.get(id=item) 
+            delete_data.delete()
+        return redirect(to='/refrigerator')
+            #チェックしたFoodsを取得
+            #self_fds =() request.POST.getlist('foods')
+            #sel_users = User.objects.filter(username__in=sel_fds)
+            #sel_foods = Refrigerator.objects.all()
+            #fds = Refrigerator.objects.all()
+            #vlist = []
+            #for item in fds:
+             #   item.group = group_obj
+             #   item.save()
+             #   vlist.append(item.user.foodset)
+            #フォームの用意
+            #foodsform = FoodsForm(request.user,foods=foods,vals=vlist)
+            #foodsform = FoodsForm(request.user,foods=foods)
+            #チェックされたGroup名をリストにまとめる
+            #glist = []
+            #for item in request.POST.getlist('foods'):
+                #glist.append(item)
+            
     #GETアクセス時の処理
     else:
         #フォームの用意
-        foodsform = FoodsForm(request.foodName,foods=foods,vals=[])
+        foodsform = FoodsForm(request.user,foods=foods)
 
     params = {
         'title' : '削除',
@@ -218,11 +231,11 @@ def food_delete(request):
         'goto_delete_refrigerator_text' : '食材削除',
 
         'data' : data,
-        'form' : CheckForm(),
+        #'form' : CheckForm(),
         #checkbox
         'foods_form' : foodsform,
+        
     }
-   
     
     return render(request, 'refrigerator/food_delete.html',params)
 
