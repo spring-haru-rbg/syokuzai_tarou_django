@@ -26,11 +26,12 @@ class CheckForm(forms.Form):
         initial=0
     )
 
+#delete_checkbox
 class FoodsForm(forms.Form):
-    def __init__(self,foodName, foods=[],*args,**kwargs ):
+    def __init__(self, user, foods=[], *args, **kwargs ):
         super(FoodsForm, self).__init__(*args,**kwargs)
         self.fields['foods'] = forms.MultipleChoiceField(
-            choices = [(item.foodName,item.foodName) for item in foods],
+            choices = [(item.id,item.foodset) for item in foods],
             widget = forms.CheckboxSelectMultiple(),
             initial = 0
         )
