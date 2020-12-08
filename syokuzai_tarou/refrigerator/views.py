@@ -13,6 +13,9 @@ from django.shortcuts import redirect, render
 
 # Create your views here.
 
+
+
+
 def refrigerator(request):
     data = Food.objects.all()
     params = {
@@ -79,14 +82,12 @@ def food_change_select(request):
         'goto_recipe_select_text' : 'レシピ表示',
         'goto_delete' : 'food_delete',
         'goto_delete_text' : '削除',
-        #'goto_change' : 'food_change', #ボタン遷移
-        #'goto_change_text' : '食材変更', #ボタン遷移
 
         'data' : data,
-
         'form' : SelectForm(),
 
     }
+    
     return render(request, 'refrigerator/food_change_select.html',params)
 
 def food_change(request):
@@ -177,6 +178,27 @@ def recipe(request):
 
 def food_delete(request):
     data = Food.objects.all()
+    foods = Food.objects.all()
+    #POST送信時の処理
+    if request.method == 'POST':
+     #Foodsのチェック更新時の処理
+     if request.POST['mode'] == '__foods_form__':
+        #チェックしたFoodsを取得
+        self_fds = request.POST.getlist('foods')
+        sel_foods = Food.objects.all()
+        fds = Food.objects.all()
+        #vlist = []
+        #for item in fds:
+         #   item.group = group_obj
+         #   item.save()
+         #   vlist.append(item.foodName)
+        #フォームの用意
+        foodsform = FoodsForm(request.foodName,foods=foods,vals=vlist)
+    #GETアクセス時の処理
+    else:
+        #フォームの用意
+        foodsform = FoodsForm(request.foodName,foods=foods,vals=[])
+
     params = {
         'title' : '削除',
         'text' : '削除ページ',
@@ -196,8 +218,15 @@ def food_delete(request):
         'goto_delete_refrigerator_text' : '食材削除',
 
         'data' : data,
+        'form' : CheckForm(),
+        #checkbox
+        'foods_form' : foodsform,
     }
+   
+    
     return render(request, 'refrigerator/food_delete.html',params)
+
+
 
 
 def calender(request):
