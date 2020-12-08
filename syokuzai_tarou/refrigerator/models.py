@@ -1,4 +1,5 @@
 from django.db import models
+from accounts.models import CustomUser
 
 
 # Create your models here.
@@ -22,3 +23,14 @@ class FoodSet(models.Model):
     foodGram = models.IntegerField(default=0)
     def __str__(self):
         return str(self.food)  + " [ " + str(self.limitRegister) + " ] " + str(self.foodGram)
+    
+    class Meta:
+        ordering = ('-limitRegister',)
+
+# Refrigeratorクラス
+class Refrigerator(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    foodset = models.ForeignKey(FoodSet, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.user)  + " : "  + str(self.foodset)
