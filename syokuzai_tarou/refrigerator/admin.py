@@ -7,3 +7,4 @@ from .models import *
 
 admin.site.register(Food)
 admin.site.register(FoodSet)
+admin.site.register(Refrigerator)

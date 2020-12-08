@@ -24,22 +24,6 @@
 <div class="wrapper">
    <main class="main">
     <a>食材削除ページ</a>
-    <table>
-        <tr>
-            <th></th>
-            <th>番号</th>
-            <th>食材名</th>
-        </tr>
-        {% for item in data %}
-            <tr>
-                <td><input type="checkbox" value="delete"></td>
-                <td>{{ item.id }}</td>
-                <td>{{ item.foodName }}</td>
-            </tr>
-        {% endfor %}
-    </table>
-    {% csrf_token %}
-    <input type="submit" value="食材削除">
 </main>
 </div>
 <footer class="footer">
