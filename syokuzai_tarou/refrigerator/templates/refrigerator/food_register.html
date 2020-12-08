@@ -6,6 +6,14 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/style.css' %}" />
     <title>hello</title>
+    <link rel="stylesheet" href="{% static 'refrigerator/css/style.css' %}" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<link href="/static/bootstrap_datepicker_plus/css/datepicker-widget.css" type="text/css" media="all" rel="stylesheet">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="/static/bootstrap_datepicker_plus/js/datepicker-widget.js"></script> 
 </head>
 
 <body>
@@ -26,19 +34,22 @@
 </header>
 <div class="wrapper">
    <main class="main">
-    <a>食材登録ページ</a>
-    <table>
+    <h2>食材登録ページ</h2>
+    
         <form action="{% url 'food_register' %}" method="post">
             {% csrf_token %}
-            {{ form.as_table }}
+            
+            {{ form_foodset.as_table }}
+           
             <tr>
                 <td></td>
                 <td><input type="submit" value="登録"></td>
             </tr>
         </form>
-    </table>
+    
 </main>
 </div>
+
 <footer class="footer">
      <p class="copyright">Copyright @ 2020 syokuzai_tarou</p>
 </footer>
