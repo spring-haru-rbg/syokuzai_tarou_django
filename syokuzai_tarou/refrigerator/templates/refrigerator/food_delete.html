@@ -24,6 +24,14 @@
 <div class="wrapper">
    <main class="main">
     <a>食材削除ページ</a>
+    <form action="{% url 'food_delete'  %}" method="post">
+        {% csrf_token %}
+        <tr>
+            <input type="hidden"  value="__foods_form__">
+            {{ foods_form }}
+        </tr>
+        <input type="submit" value="食材削除">
+    </form>
 </main>
 </div>
 <footer class="footer">
