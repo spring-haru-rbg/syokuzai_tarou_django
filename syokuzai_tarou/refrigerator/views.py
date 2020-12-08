@@ -56,13 +56,15 @@ def food_register(request):
         'goto_delete' : 'food_delete',
         'goto_delete_text' : '削除',
 
-        'form' : FoodForm(), # 1204追加
+        #'form' : FoodForm(), # 1204追加
+        'form_food' : FoodForm(),
+        'form_foodset' : FoodSetForm(),
     }
     if request.method == 'POST':
-        obj = Food()
-        food = FoodForm(request.POST, instance=obj)
-        food.save()
-        return redirect(to='/refrigerator')
+        obj = FoodSet()
+        foodset = FoodSetForm(request.POST, instance=obj)
+        foodset.save()
+        return redirect(to='/refrigerator/food_register')
     return render(request, 'refrigerator/food_register.html',params)
 
 def food_change_select(request):
