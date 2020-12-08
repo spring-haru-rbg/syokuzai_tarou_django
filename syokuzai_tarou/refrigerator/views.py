@@ -18,6 +18,8 @@ from django.shortcuts import redirect, render
 
 def refrigerator(request):
     data = Food.objects.all()
+    foods = Refrigerator.objects.all()
+    foodsform = FoodsForm(request.user,foods=foods)
     params = {
         'title' : '食材残さないよ太郎',
         'text' : 'レシピを表示する際に使いたい食材にチェックを入れてレシピ表示ボタンを押してください',
@@ -36,6 +38,8 @@ def refrigerator(request):
         'goto_delete_text' : '削除',
         
         'data' : data,
+
+        'foods' : foods,
     }
     return render(request, 'refrigerator/refrigerator.html',params)
 
