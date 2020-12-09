@@ -32,6 +32,9 @@ class FoodSet(models.Model):
     def __str__(self):
         return str(self.food)  + " [ " + str(self.limitRegister) + " ] " + str(self.foodGram)
     
+    def str_limitRegister(self):
+        return str(self.limitRegister)
+    
     class Meta:
         ordering = ('-limitRegister',)
 
