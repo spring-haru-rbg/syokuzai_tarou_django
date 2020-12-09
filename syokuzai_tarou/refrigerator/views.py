@@ -15,6 +15,7 @@ from django.shortcuts import redirect
 def refrigerator(request):
     data = Food.objects.all()
     foods = Refrigerator.objects.all()
+    header = ['食材名','数量','賞味・消費期限']
     params = {
         'title' : '食材残さないよ太郎',
         'text' : 'レシピを表示する際に使いたい食材にチェックを入れてレシピ表示ボタンを押してください',
@@ -34,6 +35,7 @@ def refrigerator(request):
         
         'data' : data,
         'foods' : foods,
+        'header':header
     }
     return render(request, 'refrigerator/refrigerator.html',params)
 

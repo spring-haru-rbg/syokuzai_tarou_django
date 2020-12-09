@@ -4,7 +4,10 @@
 
 <head>
     <meta charset="utf-8">
+    <!--
     <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/style.css' %}" />
+    -->
+    <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/table.css' %}" />
     <title>{{ title }}</title>
 </head>
 
@@ -27,15 +30,23 @@
 </header>
 <div class="wrapper">
    <main class="main">
-    <a>トップページ</a>
+    <a>トップページ</a><br>
     <table>
         <tr>
-            <th>食材名</th>
+        <thead>
+        {% for h in header %}
+              <th>{{h}}</th>  
+        {% endfor %}
+        </thead>
         </tr>
         {% for item in foods %}
             <tr>
-               
-                <td>{{ item.foodset }}</td>
+                <!--
+                    <td>{{ item.foodset }}</td>
+                -->
+                <td>{{ item.foodset.food }}</td>
+                <td>{{ item.foodset.foodGram }}</td>
+                <td>{{ item.foodset.limitRegister }}</td>
             </tr>
         {% endfor %}
     </table>

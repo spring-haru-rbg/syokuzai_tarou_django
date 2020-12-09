@@ -1,0 +1,165 @@
+
+@charset "UTF-8";
+html {
+    font-size: 62.5%;
+}
+
+body {
+    color: #333;
+    font-size: 1.2rem;
+    font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+    background: #e6dfcb url('../images/background.png');
+}
+
+*,
+*::before,
+* ::after {
+    box-sizing: border-box;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+    color: #567947;
+    text-decoration: none;
+}
+
+.header {
+    width: 100%;
+    background-color: #e6dfcb;
+    padding: 28px 0 10px;
+    box-shadow: 0 0 10px 1px #e3e3e3;
+}
+
+.wrapper {
+    width: 970px;
+    margin: 30px auto 40px;
+}
+
+.main {
+    display: block;
+    width: 660px;
+    margin: 0 auto;
+    height: 500px;
+    text-align: center;
+}
+
+.footer {
+    width: 100%;
+    padding: 20px 0 30px;
+    background-color: #567947;
+    color: #fff;
+}
+
+.logo {
+    width: 225px;
+    height: 56px;
+    margin: 0 auto;
+    color: #eb5a09;
+    /*ロゴ作れば追加する p36
+    background: url('') no-repeat;
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+    */
+}
+
+.logo a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.global-nav {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.global-nav .nav-item {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.global-nav .nav-item a {
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 8px;
+    color: #666;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    transition: 0.15s;
+}
+
+
+/*リンクにホバーしたときに色をつける*/
+
+.global-nav .nav-item.active a,
+.global-nav .nav-item a:hover {
+    background-color: #567947;
+    color: #fff;
+}
+
+
+/* copyright */
+
+.copyright {
+    margin-top: 30px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+
+/* spacing */
+
+table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    /*border: 3px solid rgb(153, 206, 188);*/
+  }
+  
+  thead th:nth-child(1) {
+    width: 30%;
+  }
+  
+  thead th:nth-child(2) {
+    width: 20%;
+  }
+  
+  thead th:nth-child(3) {
+    width: 15%;
+  }
+  
+  thead th:nth-child(4) {
+    width: 35%;
+  }
+  /*
+  th, td {
+    padding: 20px;
+  }
+*/
+ th{
+    padding: 20px;
+  }
+  td{
+    padding: 20px;
+    background:  #b5d8a7;
+    border: 1px solid #ddd;
+  }
+
+  thead, tfoot {
+    /*background: url(leopardskin.jpg);*/
+    color: white;
+    text-shadow: 1px 1px 1px black;
+  }
+  
+  thead th, tfoot th, tfoot td {
+    /*background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));*/
+    border-radius: 10px;/*角の丸み*/
+    background:  #567947;
+    /*border: 3px solid #b5d8a7;*/
+  }
