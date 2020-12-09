@@ -11,13 +11,14 @@ import os
 
 #radio
 class SelectForm(forms.Form): 
-    select = forms.ModelChoiceField(
-        models.Food.objects,
-        label=Food.foodName,
-        widget=forms.RadioSelect, 
-        initial=0
+    def __init__(self, user, foods=[], *args, **kwargs ):
+        super(SelectForm, self).__init__(*args,**kwargs)
+        self.fields['foods'] = forms.ChoiceField(
+            label = "",
+            choices = [(item.id,item.foodset) for item in foods],
+            widget = forms.RadioSelect(),
+            initial = 0
         )
-
 
 # delete_checkbox 食材削除チェックボックス
 class FoodsForm(forms.Form):
@@ -56,6 +57,7 @@ class FoodSetRegisterForm(forms.ModelForm):
         if value < 0:
             raise ValidationError("数量は0以上にしてください")
         return foodGram
+
  
     #def clean(self):
      #   cleaned_data = super().clean()
@@ -64,3 +66,11 @@ class FoodSetRegisterForm(forms.ModelForm):
         #if not (name or nickname):
          #   raise forms.ValidationError("名前かニックネームのどちらかを入力して下さい")
         #return cleaned_data
+
+# 食材数量変更フォーム
+class FoodGramChangeForm(forms.ModelForm):
+    class Meta:
+        model = FoodSet
+        
+        fields = ['foodGram']
+        

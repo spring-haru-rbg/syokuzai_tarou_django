@@ -77,6 +77,22 @@ def food_register(request):
 
 def food_change_select(request):
     data = Food.objects.all()
+    foods = Refrigerator.objects.all()
+    #POST送信時の処理
+    if (request.method == 'POST'):
+     #Foodsのチェック更新時の処理
+        
+        checks_value = request.POST.getlist('foods')
+        for item in checks_value:
+            change_data = Refrigerator.objects.get(id=item) 
+            num = item
+       
+        return redirect(to='/refrigerator/food_change/'+num)
+            
+    #GETアクセス時の処理
+    else:
+        #フォームの用意
+        selectform = SelectForm(request.user,foods=foods)
     params = {
         'title' : '食材変更',
         'text' : '変更ページ',
@@ -94,13 +110,20 @@ def food_change_select(request):
         'goto_delete_text' : '削除',
 
         'data' : data,
-        'form' : SelectForm(),
+        'select_form' : selectform,
 
     }
     
     return render(request, 'refrigerator/food_change_select.html',params)
 
-def food_change(request):
+def food_change(request,num):
+    foods = Refrigerator.objects.get(id=num).foodset.id
+    foodset = FoodSet.objects.get(id=foods)
+    if (request.method == 'POST'):
+            change_foods = FoodGramChangeForm(request.POST, instance=foodset )
+            change_foods.save()
+            return redirect(to='/refrigerator') 
+
     params = {
         'title' : '数量変更',
         'text' : '食材数量変更ページ',
@@ -118,6 +141,10 @@ def food_change(request):
         'goto_delete_text' : '削除',
         'goto_change_refrigerator' : 'refrigerator',
         'goto_change_refrigerator_text' : '数量変更',
+
+        'id' : num,
+        'form' : FoodGramChangeForm(instance=foodset),
+        'foodset' : foodset,
 
     }
     return render(request, 'refrigerator/food_change.html',params)
