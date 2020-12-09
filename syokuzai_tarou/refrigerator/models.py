@@ -34,7 +34,7 @@ class FoodSet(models.Model):
     
     def str_limitRegister(self):
         return str(self.limitRegister)
-    
+
     class Meta:
         ordering = ('-limitRegister',)
 
@@ -44,6 +44,4 @@ class Refrigerator(models.Model):
     foodset = models.ForeignKey(FoodSet, on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.user)  + " : "  + str(self.foodset)
-    def get_id(self):
-        return foodset.id
+        return str(self.user)  + " : "  + str(self.foodset)     

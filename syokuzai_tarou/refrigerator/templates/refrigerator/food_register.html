@@ -53,10 +53,10 @@
 <div class="wrapper">
    <main class="main">
     <h2>食材登録ページ</h2>
-    
+    <table>
         <form action="{% url 'food_register' %}" method="post">
             {% csrf_token %}
-            
+           
             {{ form_foodset.as_table }}
            
             <tr>
@@ -64,6 +64,7 @@
                 <td><input type="submit" value="登録"></td>
             </tr>
         </form>
+    </table>
 </main>
 </div>
 
