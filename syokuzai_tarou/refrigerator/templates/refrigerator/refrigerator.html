@@ -30,13 +30,12 @@
     <a>トップページ</a>
     <table>
         <tr>
-            <th>ID</th>
-            <th>FOODNAME</th>
+            <th>食材名</th>
         </tr>
-        {% for item in data %}
+        {% for item in foods %}
             <tr>
-                <td>{{ item.id }}</td>
-                <td>{{ item.foodName }}</td>
+               
+                <td>{{ item.foodset }}</td>
             </tr>
         {% endfor %}
     </table>

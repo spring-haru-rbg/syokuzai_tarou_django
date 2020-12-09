@@ -11,11 +11,11 @@
         <h1 class="logo">食材残さないよ太郎</h1>
         <nav class="global-nav">
             <ul>
-                <li class="nav-item active"><a href="{% url goto_refrigerator %}">{{ goto_refrigerator_text }}</a></li>
+                <li class="nav-item"><a href="{% url goto_refrigerator %}">{{ goto_refrigerator_text }}</a></li>
                 <li class="nav-item"><a href="{% url goto_register %}">{{ goto_register_text }}</a></li>
                 <li class="nav-item"><a href="{% url goto_change_select %}">{{ goto_change_select_text }}</a></li>
                 <li class="nav-item"> <a href="{% url goto_search %}">{{ goto_search_text }}</a></li>
-                <li class="nav-item"><a href="{% url goto_recipe_select %}">{{ goto_recipe_select_text }}</a></li>
+                <li class="nav-item active"><a href="{% url goto_recipe_select %}">{{ goto_recipe_select_text }}</a></li>
                 <li class="nav-item"><a href="{% url goto_delete %}">{{ goto_delete_text }}</a></li>
                
             </ul>
