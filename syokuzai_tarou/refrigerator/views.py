@@ -19,7 +19,6 @@ from django.shortcuts import redirect, render
 def refrigerator(request):
     data = Food.objects.all()
     foods = Refrigerator.objects.all()
-    foodsform = FoodsForm(request.user,foods=foods)
     params = {
         'title' : '食材残さないよ太郎',
         'text' : 'レシピを表示する際に使いたい食材にチェックを入れてレシピ表示ボタンを押してください',
@@ -38,7 +37,6 @@ def refrigerator(request):
         'goto_delete_text' : '削除',
         
         'data' : data,
-
         'foods' : foods,
     }
     return render(request, 'refrigerator/refrigerator.html',params)
@@ -187,29 +185,11 @@ def food_delete(request):
     if (request.method == 'POST'):
      #Foodsのチェック更新時の処理
         
-        #foods.delete()
         checks_value = request.POST.getlist('foods')
         for item in checks_value:
             delete_data = Refrigerator.objects.get(id=item) 
             delete_data.delete()
         return redirect(to='/refrigerator')
-            #チェックしたFoodsを取得
-            #self_fds =() request.POST.getlist('foods')
-            #sel_users = User.objects.filter(username__in=sel_fds)
-            #sel_foods = Refrigerator.objects.all()
-            #fds = Refrigerator.objects.all()
-            #vlist = []
-            #for item in fds:
-             #   item.group = group_obj
-             #   item.save()
-             #   vlist.append(item.user.foodset)
-            #フォームの用意
-            #foodsform = FoodsForm(request.user,foods=foods,vals=vlist)
-            #foodsform = FoodsForm(request.user,foods=foods)
-            #チェックされたGroup名をリストにまとめる
-            #glist = []
-            #for item in request.POST.getlist('foods'):
-                #glist.append(item)
             
     #GETアクセス時の処理
     else:
@@ -235,7 +215,6 @@ def food_delete(request):
         'goto_delete_refrigerator_text' : '食材削除',
 
         'data' : data,
-        #'form' : CheckForm(),
         #checkbox
         'foods_form' : foodsform,
         

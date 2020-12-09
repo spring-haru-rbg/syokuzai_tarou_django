@@ -17,14 +17,6 @@ class SelectForm(forms.Form):
         initial=0
         )
 
-#checkbox
-class CheckForm(forms.Form):
-    delete = forms.ModelChoiceField(
-        models.Food.objects,
-        label=Food.foodName,
-        widget=forms.CheckboxInput,
-        initial=0
-    )
 
 #delete_checkbox
 class FoodsForm(forms.Form):
