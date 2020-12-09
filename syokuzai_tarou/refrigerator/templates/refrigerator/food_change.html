@@ -23,7 +23,17 @@
 </header>
 <div class="wrapper">
    <main class="main">
-    <a>食材登録変更ページ</a>
+    <a>食材登録変更ページ</a></br>
+    
+    {{ foodset.food }}</br>
+    {{ foodset.limitRegister}}
+    <form action="{% url 'food_change'  id  %}" method="post">
+        {% csrf_token %}
+        <tr>
+            {{ form }}
+        </tr>
+        <input type="submit" value="食材変更">
+    </form>
    </main>
 </div>
 <footer class="footer">

@@ -42,3 +42,5 @@ class Refrigerator(models.Model):
 
     def __str__(self):
         return str(self.user)  + " : "  + str(self.foodset)
+    def get_id(self):
+        return foodset.id

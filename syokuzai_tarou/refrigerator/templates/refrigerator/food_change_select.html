@@ -25,23 +25,18 @@
     <div class="wrapper">
        <main class="main">
         <a>食材登録変更を選択するページ</a>
-        <table>
-            <form action="{% url 'food_register' %}" method="post"></form>
             <tr>
                 <th></th>
                 <th>食材名</th>
             </tr>
-            {% for item in data %}
-            <tr>
-                <td><input type="radio" value="change" id=item.id></td>
-                <td>{{ item.id }}</td>
-                <td>{{ item.foodName }}</td>
-            </tr>
-            {% endfor %}
+            <form action="{% url 'food_change_select'   %}" method="post">
+                {% csrf_token %}
+                <tr>
+                    {{ select_form }}
+                    <input type="hidden"  value="__select_form__">
+                </tr>
+                <input type="submit" value="食材変更">
             </form>
-        </table>
-        {% csrf_token %}
-        <input type="submit" onclick="location.href='/refrigerator/food_change'" value="食材変更" >
     </main>
     </div>
     <footer class="footer">
