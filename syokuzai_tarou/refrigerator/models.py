@@ -1,5 +1,7 @@
 from django.db import models
 from accounts.models import CustomUser
+from django.core.validators import MinValueValidator
+from django.core.exceptions import ValidationError
 
 
 # Create your models here.
@@ -12,6 +14,12 @@ class Food(models.Model):
     def __str__(self):
         return self.foodName
 
+
+# 数量が０以上かどうかチェックする
+def check_gram(value):
+    if value < 0:
+        raise ValidationError("数量は0以上にしてください")
+
 # FoodSetクラス
 class FoodSet(models.Model):
     food = models.ForeignKey(Food, on_delete=models.CASCADE)
@@ -20,7 +28,7 @@ class FoodSet(models.Model):
         blank=True,
         null=True,
     )
-    foodGram = models.IntegerField(default=0)
+    foodGram = models.IntegerField(default=0,validators=[check_gram])
     def __str__(self):
         return str(self.food)  + " [ " + str(self.limitRegister) + " ] " + str(self.foodGram)
     
