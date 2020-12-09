@@ -7,11 +7,33 @@
     <title>テストページ</title>
     <link rel="stylesheet" href="{% static 'refrigerator/css/reset.css' %}" />
     <link rel="stylesheet" href="{% static 'refrigerator/css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'refrigerator/css/hamburger.css' %}" />
+    <!--
+    <link rel="hamburger/less" type="text/css" href="{% static 'refrigerator/css/hamburger.less' %}" />
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js" ></script>
+    -->
 </head>
 
 <body>
     <header class="header">
         <h1 class="logo">食材残さないよ太郎</h1>
+        <div class="outer-menu">
+            <input class="checkbox-toggle" type="checkbox" />
+            <div class="hamburger">
+            <div></div>
+            </div>
+            <div class="menu">
+                <div>
+                    <div>
+                        <ul>
+                            <p>Hey！<font color="blue">{{ user.username }}</font></p>
+                            <li><a href="{% url 'logout' %}">ログアウト</a></li>
+                            <li><a href="{% url 'password_change' %}">パスワード変更</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
         <nav class="global-nav">
             <ul>
                 <li class="nav-item active"><a href="#">HOME</a></li>
@@ -25,7 +47,8 @@
     </header>
     <div class="wrapper">
         <main class="main">
-            <a>もじもじ</a>
+            <a>もじもじ</a><br>
+            <a>これはindex.html</a>
         </main>
     </div>
     <footer class="footer">

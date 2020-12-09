@@ -7,11 +7,29 @@
     <title>HOME</title>
     <link rel="stylesheet" href="{% static 'refrigerator/css/reset.css' %}" />
     <link rel="stylesheet" href="{% static 'refrigerator/css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'refrigerator/css/hamburger.css' %}" />
 </head>
 
 <body>
     <header class="header">
-        <h1 class="logo">食材太郎</h1>
+        <h1 class="logo">食材残さないよ太郎</h1>
+        <div class="outer-menu">
+            <input class="checkbox-toggle" type="checkbox" />
+            <div class="hamburger">
+            <div></div>
+            </div>
+            <div class="menu">
+                <div>
+                    <div>
+                        <ul>
+                            <p>Hey！<font color="blue">{{ user.username }}</font></p>
+                            <li><a href="{% url 'logout' %}">ログアウト</a></li>
+                            <li><a href="{% url 'password_change' %}">パスワード変更</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
         <nav class="global-nav">
             <ul>
                 <li class="nav-item active"><a href="{% url 'home' %}">HOME</a></li>
@@ -22,12 +40,15 @@
                 <li class="nav-item"><a href="#">BLOG</a></li>
             </ul>
         </nav>
+        <!--
         <p><a href="{% url 'logout' %}">ログアウト</a></p>
         <p><a href="{% url 'password_change' %}">パスワード変更</a></p>
+        -->
     </header>
     <div class="wrapper">
         <main class="main">
             <p>こんにちは{{ user.username }}さん</p>
+            <p>これはhome.html</p>
         </main>
     </div>
     <footer class="footer">
