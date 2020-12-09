@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/style.css' %}" />
     -->
     <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/table.css' %}" />
+    <link rel="stylesheet" href="{% static 'refrigerator/css/hamburger.css' %}" />
     <title>{{ title }}</title>
 </head>
 
@@ -63,7 +64,7 @@
                 -->
                 <td>{{ item.foodset.food }}</td>
                 <td>{{ item.foodset.foodGram }}</td>
-                <td>{{ item.foodset.limitRegister }}</td>
+                <td>{{ item.foodset.str_limitRegister }}</td>
             </tr>
         {% endfor %}
     </table>
