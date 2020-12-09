@@ -4,11 +4,29 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'refrigerator/css/hamburger.css' %}" />
     <title>{{ title }}</title>
 </head>
 <body>
     <header class="header">
         <h1 class="logo">食材残さないよ太郎</h1>
+        <div class="outer-menu">
+            <input class="checkbox-toggle" type="checkbox" />
+            <div class="hamburger">
+            <div></div>
+            </div>
+            <div class="menu">
+                <div>
+                    <div>
+                        <ul>
+                            <p>Hey！<font color="blue">{{ user.username }}</font></p>
+                            <li><a href="{% url 'logout' %}">ログアウト</a></li>
+                            <li><a href="{% url 'password_change' %}">パスワード変更</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
         <nav class="global-nav">
             <ul>
                 <li class="nav-item"><a href="{% url goto_refrigerator %}">{{ goto_refrigerator_text }}</a></li>

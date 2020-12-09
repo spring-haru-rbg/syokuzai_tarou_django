@@ -7,11 +7,13 @@ from .forms import *
 from .models import *
 from django.shortcuts import redirect
 
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 
 
-
+@login_required
 def refrigerator(request):
     data = Food.objects.all()
     foods = Refrigerator.objects.all()
@@ -37,6 +39,7 @@ def refrigerator(request):
     }
     return render(request, 'refrigerator/refrigerator.html',params)
 
+@login_required
 def food_register(request):
     params = {
         'title' : '食材登録',
@@ -70,7 +73,7 @@ def food_register(request):
         #return redirect(to='/refrigerator/food_register')
     return render(request, 'refrigerator/food_register.html',params)
   
-
+@login_required
 def food_change_select(request):
     data = Food.objects.all()
     foods = Refrigerator.objects.all()
@@ -112,6 +115,7 @@ def food_change_select(request):
     
     return render(request, 'refrigerator/food_change_select.html',params)
 
+@login_required
 def food_change(request,num):
     foods = Refrigerator.objects.get(id=num).foodset.id
     foodset = FoodSet.objects.get(id=foods)
@@ -145,6 +149,7 @@ def food_change(request,num):
     }
     return render(request, 'refrigerator/food_change.html',params)
 
+@login_required
 def food_search(request):
     params = {
         'title' : '食材検索',
@@ -165,6 +170,7 @@ def food_search(request):
     }
     return render(request, 'refrigerator/food_search.html',params)
 
+@login_required
 def recipe_select(request):
     params = {
         'title' : 'レシピ表示',
@@ -186,6 +192,7 @@ def recipe_select(request):
     }
     return render(request, 'refrigerator/recipe_select.html',params)
 
+@login_required
 def recipe(request):
     params = {
         'title' : 'レシピ検索結果表示',
@@ -209,6 +216,7 @@ def recipe(request):
     }
     return render(request, 'refrigerator/recipe.html',params)
 
+@login_required
 def food_delete(request):
     data = Food.objects.all()
     foods = Refrigerator.objects.all()
@@ -259,7 +267,7 @@ def food_delete(request):
 def calender(request):
     params = {
         'form_food' : FoodForm(),
-        'form_foodset' : FoodSetForm(),
+        'form_foodset' : FoodSetRegisterForm(),
     }
     if request.method == 'POST':
         obj = FoodSet()
