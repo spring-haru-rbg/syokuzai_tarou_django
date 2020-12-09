@@ -44,7 +44,7 @@
     <a>食材登録変更ページ</a></br>
     
     {{ foodset.food }}</br>
-    {{ foodset.str_limitRegister}}
+    {{ foodset.str_limitRegister }}
     <form action="{% url 'food_change'  id  %}" method="post">
         {% csrf_token %}
         <tr>
