@@ -37,7 +37,7 @@ def refrigerator(request):
         
         'data' : data,
         'foods' : foods,
-        'header':header
+        'header': header
     }
     return render(request, 'refrigerator/refrigerator.html',params)
 
@@ -59,19 +59,20 @@ def food_register(request):
         'goto_delete' : 'food_delete',
         'goto_delete_text' : '削除',
         'messgage' : '',
-        #'form' : FoodForm(), # 1204追加
         'form_food' : FoodForm(),
         'form_foodset' : FoodSetRegisterForm(),
     }
     if request.method == 'POST':
         obj = FoodSet()
-        foodset = FoodSetRegisterForm(request.POST, instance=obj)
-        if foodset.is_valid():
+        foodset_form = FoodSetRegisterForm(request.POST, instance=obj)
+        if foodset_form.is_valid():
             params['message'] = 'OK'
-            foodset.save()
+            foodset_data = foodset_form.save()   
+            refrigerator = Refrigerator.objects.create(user=request.user,foodset=foodset_data)
+            refrigerator.save()
         else:
             params['message'] = 'まだ登録できません'
-            foodset.add_error('foodGram','LOGIN_ID、またはPASSWORDが違います。')
+            foodset_form.add_error('foodGram','LOGIN_ID、またはPASSWORDが違います。')
         #return redirect(to='/refrigerator/food_register')
     return render(request, 'refrigerator/food_register.html',params)
   
@@ -222,6 +223,7 @@ def recipe(request):
 def food_delete(request):
     data = Food.objects.all()
     foods = Refrigerator.objects.all()
+    header = ['食材名','数量','賞味・消費期限']
     #POST送信時の処理
     if (request.method == 'POST'):
      #Foodsのチェック更新時の処理
@@ -258,6 +260,8 @@ def food_delete(request):
         'data' : data,
         #checkbox
         'foods_form' : foodsform,
+        'foods' : foods,
+        'header': header
         
     }
     
