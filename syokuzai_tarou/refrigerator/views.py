@@ -16,9 +16,7 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def refrigerator(request):
     data = Food.objects.all()
-    food = FoodSet()
     foods = Refrigerator.objects.all().order_by('foodset').reverse()
-    #foods = Refrigerator.objects.order_by('').reverse().first()
     header = ['食材名','数量','賞味・消費期限']
     params = {
         'title' : '食材残さないよ太郎',
@@ -81,7 +79,6 @@ def food_register(request):
 @login_required
 def food_change_select(request):
     data = Food.objects.all()
-    food = FoodSet()
     foods = Refrigerator.objects.all().order_by('foodset').reverse()
     #POST送信時の処理
     if (request.method == 'POST'):
@@ -225,7 +222,6 @@ def recipe(request):
 @login_required
 def food_delete(request):
     data = Food.objects.all()
-    food = FoodSet()
     foods = Refrigerator.objects.all().order_by('foodset').reverse()
     header = ['食材名','数量','賞味・消費期限']
     #POST送信時の処理
