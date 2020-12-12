@@ -26,9 +26,8 @@ a:active {
 
 .header {
     width: 100%;
-    background-color: #e6dfcb;
     padding: 28px 0 10px;
-    box-shadow: 0 0 10px 1px #e3e3e3;
+    background-color: #b5d8a7;
 }
 
 .wrapper {
@@ -47,7 +46,7 @@ a:active {
 .footer {
     width: 100%;
     padding: 20px 0 30px;
-    background-color: #567947;
+    background-color: #b5d8a7;
     color: #fff;
 }
 
