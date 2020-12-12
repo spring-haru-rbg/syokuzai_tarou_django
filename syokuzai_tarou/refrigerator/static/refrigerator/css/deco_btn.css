@@ -1,5 +1,5 @@
 .decorated-btn{
-    width: 100px;
+    width: 80px;
     height: 30px;
     line-height: 30px;
     text-align: center;
@@ -10,4 +10,6 @@
     transition: 0.15s;
     background-color: #567947;
     border: 0px solid #567947;
+    -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
 }
