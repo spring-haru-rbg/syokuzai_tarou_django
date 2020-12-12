@@ -77,7 +77,4 @@ class FoodGramChangeForm(forms.ModelForm):
 #検索フォーム
 class SearchForm(forms.Form):
     search = forms.CharField(label=False,required=False)
-    #def __init__(self, *args, **kwargs):
-     #   self.fields['search'].label = False
-
         
