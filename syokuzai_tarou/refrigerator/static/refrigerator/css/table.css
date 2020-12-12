@@ -126,19 +126,19 @@ table {
   }
   
   thead th:nth-child(1) {
-    width: 40%;
+    width: 30%;
   }
   
   thead th:nth-child(2) {
-    width: 30%;
+    width: 20%;
   }
   
   thead th:nth-child(3) {
-    width: 30%;
+    width: 15%;
   }
   
-  /*thead th:nth-child(4) {
-    width: 0%;
+  thead th:nth-child(4) {
+    width: 35%;
   }
   /*
   th, td {
@@ -155,7 +155,7 @@ table {
   }
 
   thead, tfoot {
-    display: block;
+  
     /*background: url(leopardskin.jpg);*/
     color: white;
     text-shadow: 1px 1px 1px black;
@@ -163,7 +163,7 @@ table {
   }
   
   thead th, tfoot th, tfoot td {
-    width: 300px;
+    
     /*background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));*/
     border-radius: 10px;/*角の丸み*/
     background:  #567947;
