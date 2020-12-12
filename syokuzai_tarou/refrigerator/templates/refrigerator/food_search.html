@@ -44,6 +44,25 @@
     <div class="wrapper">
        <main class="main">
         <a>食材検索ページ</a>
+        <table>
+            <form action="{% url 'food_search' %}" method="post">
+                {% csrf_token %}
+                <tr>
+                    <p align="left">{{msg}}</p>
+                    <td>{{form.search}}<th><input type="submit" value="検索"></th></td>   
+                </tr>
+            </form>
+        </table>
+        <hr>
+        <table>
+            {% for item in foods %}
+            <tr>
+                <td>{{item.foodset.food}}</td>
+                <td>{{item.foodset.foodGram}}</td>
+                <td>{{item.foodset.str_limitRegister}}</td>
+            </tr>
+            {% endfor %}
+        </table>
     </main>
     </div>
     <footer class="footer">

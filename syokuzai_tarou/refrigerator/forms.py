@@ -73,4 +73,8 @@ class FoodGramChangeForm(forms.ModelForm):
         model = FoodSet
         
         fields = ['foodGram']
+
+#検索フォーム
+class SearchForm(forms.Form):
+    search = forms.CharField(label=False,required=False)
         
