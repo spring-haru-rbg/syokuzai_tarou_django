@@ -6,7 +6,8 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/table.css' %}" />
     <link rel="stylesheet" href="{% static 'refrigerator/css/hamburger.css' %}" />
-    <title>hello</title>
+    <link rel="stylesheet" href="{% static 'refrigerator/css/deco_btn.css' %}" />
+    <title>{{title}}</title>
 </head>
 
 <body>
@@ -47,7 +48,7 @@
             <form action="{% url 'food_search' %}" method="post">
                 {% csrf_token %}
                     <p align="left">{{msg}}</p>
-                    <p align="left">{{form.search}}<th><input type="submit" value="検索"></th></p>   
+                    <p align="left">{{form.search}}<th><input class="decorated-btn" type="submit" value="検索"></th></p>   
             </form>   
         <hr>
         <table>
