@@ -154,6 +154,15 @@ def food_change(request,num):
 
 @login_required
 def food_search(request):
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+        msg = '食品名を入れてください'
+        search_name = request.POST['search']
+        foods = Refrigerator.objects.filter(foodset__food__foodName__icontains = search_name)
+    else:
+        form = SearchForm()
+        foods = Refrigerator.objects.all()
+        msg = '食品名を入れてください'
     params = {
         'title' : '食材検索',
         'text' : '検索ページ',
@@ -169,6 +178,10 @@ def food_search(request):
         'goto_recipe_select_text' : 'レシピ表示',
         'goto_delete' : 'food_delete',
         'goto_delete_text' : '削除',
+
+        'form' : form,
+        'foods' : foods,
+        'msg' : msg,
 
     }
     return render(request, 'refrigerator/food_search.html',params)
