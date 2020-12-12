@@ -33,6 +33,7 @@ a:active {
 }
 
 .wrapper {
+    height: 200%;
     width: 970px;
     margin: 30px auto 40px;
 }
@@ -43,6 +44,7 @@ a:active {
     margin: 0 auto;
     height: 500px;
     text-align: center;
+  
 }
 
 .footer {
@@ -116,6 +118,7 @@ a:active {
 /* spacing */
 
 table {
+    height: 200%;
     table-layout: fixed;
     width: 100%;
     border-collapse: collapse;
@@ -152,12 +155,15 @@ table {
   }
 
   thead, tfoot {
+  
     /*background: url(leopardskin.jpg);*/
     color: white;
     text-shadow: 1px 1px 1px black;
+
   }
   
   thead th, tfoot th, tfoot td {
+    
     /*background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));*/
     border-radius: 10px;/*角の丸み*/
     background:  #567947;

@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/style.css' %}" />
     -->
     <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/table.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/scrollbar.css' %}" />
     <link rel="stylesheet" href="{% static 'refrigerator/css/hamburger.css' %}" />
     <title>{{ title }}</title>
 </head>
@@ -52,12 +53,15 @@
     <a>{{ user.username }}さんの冷蔵庫</a><br>
     <table>
         <tr>
-        <thead>
+            <thead>
         {% for h in header %}
               <th>{{h}}</th>  
         {% endfor %}
-        </thead>
+            </thead>
         </tr>
+    </table>
+        <div class="scrollArea">
+            <table>
         {% for item in foods %}
             <tr>
                 <!--
@@ -68,8 +72,10 @@
                 <td>{{ item.foodset.str_limitRegister }}</td>   
             </tr>
         {% endfor %}
+        
     </table>
-</main>
+        </div>
+   </main>
 </div>
 <footer class="footer">
      <p class="copyright">Copyright @ 2020 syokuzai_tarou</p>
