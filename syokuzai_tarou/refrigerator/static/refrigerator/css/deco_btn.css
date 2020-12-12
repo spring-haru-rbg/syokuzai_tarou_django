@@ -1,0 +1,13 @@
+.decorated-btn{
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    transition: 0.15s;
+    background-color: #567947;
+    border: 0px solid #567947;
+}

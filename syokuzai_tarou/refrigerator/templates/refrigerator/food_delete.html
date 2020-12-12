@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'refrigerator/css/hamburger.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/deco_btn.css' %}" />
     <title>{{ title }}</title>
 </head>
 <body>
@@ -48,7 +49,7 @@
             <input type="hidden"  value="__foods_form__">
             {{ foods_form }}
         </tr>
-        <input type="submit" value="食材削除">
+        <input class="decorated-btn" type="submit" value="食材削除">
     </form>
 </main>
 </div>

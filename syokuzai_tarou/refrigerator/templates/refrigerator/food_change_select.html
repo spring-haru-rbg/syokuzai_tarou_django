@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'refrigerator/css/hamburger.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/deco_btn.css' %}" />
     <title>hello</title>
 </head>
 
@@ -53,7 +54,7 @@
                     {{ select_form }}
                     <input type="hidden"  value="__select_form__">
                 </tr>
-                <input type="submit" value="食材変更">
+                <input class="decorated-btn" type="submit" value="食材変更">
             </form>
     </main>
     </div>
