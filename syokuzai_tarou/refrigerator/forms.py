@@ -41,7 +41,7 @@ class FoodSetRegisterForm(forms.ModelForm):
     class Meta:
         model = FoodSet
         
-        fields = ['food','limitRegister','foodGram']
+        fields = ['food','limitRegister','foodGram','volume']
         widgets = {
             'limitRegister': datetimepicker.DatePickerInput(
                 format='%Y-%m-%d',

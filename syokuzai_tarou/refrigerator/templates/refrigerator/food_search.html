@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/table.css' %}" />
     <link rel="stylesheet" href="{% static 'refrigerator/css/hamburger.css' %}" />
     <title>hello</title>
 </head>
@@ -44,23 +44,26 @@
     <div class="wrapper">
        <main class="main">
         <a>食材検索ページ</a>
-        <table>
             <form action="{% url 'food_search' %}" method="post">
                 {% csrf_token %}
-                <tr>
                     <p align="left">{{msg}}</p>
-                    <td>{{form.search}}<th><input type="submit" value="検索"></th></td>   
-                </tr>
-            </form>
-        </table>
+                    <p align="left">{{form.search}}<th><input type="submit" value="検索"></th></p>   
+            </form>   
         <hr>
         <table>
-            {% for item in foods %}
             <tr>
-                <td>{{item.foodset.food}}</td>
-                <td>{{item.foodset.foodGram}}</td>
-                <td>{{item.foodset.str_limitRegister}}</td>
+            <thead>
+            {% for h in header %}
+                  <th>{{h}}</th>  
+            {% endfor %}
+            </thead>
             </tr>
+            {% for item in foods %}
+                <tr>
+                    <td>{{ item.foodset.food }}</td>
+                    <td>{{ item.foodset.foodGram }} [{{ item.foodset.volume }}]</td>
+                    <td>{{ item.foodset.str_limitRegister }}</td>   
+                </tr>
             {% endfor %}
         </table>
     </main>
