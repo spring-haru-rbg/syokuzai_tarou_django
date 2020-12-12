@@ -63,8 +63,8 @@
                     <td>{{ item.foodset }}</td>
                 -->
                 <td>{{ item.foodset.food }}</td>
-                <td>{{ item.foodset.foodGram }}</td>
-                <td>{{ item.foodset.str_limitRegister }}</td>
+                <td>{{ item.foodset.foodGram }} [{{ item.foodset.volume }}]</td>
+                <td>{{ item.foodset.str_limitRegister }}</td>   
             </tr>
         {% endfor %}
     </table>

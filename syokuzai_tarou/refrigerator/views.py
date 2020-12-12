@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from .forms import *
 from .models import *
 from django.shortcuts import redirect
-
+from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -154,6 +154,7 @@ def food_change(request,num):
 
 @login_required
 def food_search(request):
+    header = ['食材名','数量','賞味・消費期限']
     if request.method == 'POST':
         form = SearchForm(request.POST)
         msg = '食品名を入れてください'
@@ -179,6 +180,7 @@ def food_search(request):
         'goto_delete' : 'food_delete',
         'goto_delete_text' : '削除',
 
+        'header': header,
         'form' : form,
         'foods' : foods,
         'msg' : msg,
