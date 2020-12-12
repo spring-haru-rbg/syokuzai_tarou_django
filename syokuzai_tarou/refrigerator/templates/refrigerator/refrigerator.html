@@ -4,12 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <!--
-    <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/style.css' %}" />
-    -->
     <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/table.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/scrollbar.css' %}" />
     <link rel="stylesheet" href="{% static 'refrigerator/css/hamburger.css' %}" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <title>{{ title }}</title>
 </head>
 
@@ -25,7 +23,7 @@
                 <div>
                     <div>
                         <ul>
-                            <hu>Hey！<font color="blue">{{ user.username }}</font></hu>
+                            <hu>Hey！<font color="#eb5a09">{{ user.username }}</font></hu>
                             <li><a href="{% url 'logout' %}">ログアウト</a></li>
                             <li><a href="{% url 'password_change' %}">パスワード変更</a></li>
                         </ul>
@@ -60,7 +58,7 @@
             </thead>
         </tr>
     </table>
-        <div class="scrollArea">
+        <div class="scrollArea deco" ::-webkit-scrollbar-thumb>
             <table>
         {% for item in foods %}
             <tr>

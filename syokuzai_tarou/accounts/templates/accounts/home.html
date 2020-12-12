@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'refrigerator/css/reset.css' %}" />
     <link rel="stylesheet" href="{% static 'refrigerator/css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'refrigerator/css/hamburger.css' %}" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -22,7 +23,7 @@
                 <div>
                     <div>
                         <ul>
-                            <p>Hey！<font color="blue">{{ user.username }}</font></p>
+                            <p>Hey！<font color="#eb5a09">{{ user.username }}</font></p>
                             <li><a href="{% url 'logout' %}">ログアウト</a></li>
                             <li><a href="{% url 'password_change' %}">パスワード変更</a></li>
                         </ul>
