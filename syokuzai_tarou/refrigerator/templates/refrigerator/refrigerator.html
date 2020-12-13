@@ -17,13 +17,15 @@
         <div class="outer-menu">
             <input class="checkbox-toggle" type="checkbox" />
             <div class="hamburger">
-            <div></div>
+                <div></div>
             </div>
             <div class="menu">
                 <div>
                     <div>
                         <ul>
-                            <hu>Hey！<font color="#eb5a09">{{ user.username }}</font></hu>
+                            <hu>Hey！
+                                <font color="#eb5a09">{{ user.username }}</font>
+                            </hu>
                             <li><a href="{% url 'logout' %}">ログアウト</a></li>
                             <li><a href="{% url 'password_change' %}">パスワード変更</a></li>
                         </ul>
@@ -39,37 +41,39 @@
                 <li class="nav-item"> <a href="{% url goto_search %}">{{ goto_search_text }}</a></li>
                 <li class="nav-item"><a href="{% url goto_recipe_select %}">{{ goto_recipe_select_text }}</a></li>
                 <li class="nav-item"><a href="{% url goto_delete %}">{{ goto_delete_text }}</a></li>
-                
+
             </ul>
         </nav>
-   
-</header>
-<div class="wrapper">
-   <main class="main">
-    <a>トップページ</a><br>
-    <h2>{{ user.username }}さんの冷蔵庫</h2><br>
-    <table>
-        <tr>
-        {% for h in header %}
-              <th class="fixed01">{{h}}</th>
-        {% endfor %}
-        </tr>
-        {% for item in foods %}
-            <tr>
-                <!--
-                    <td>{{ item.foodset }}</td>
-                -->
-                <td>{{ item.foodset.food }}</td>
-                <td>{{ item.foodset.foodGram }} [{{ item.foodset.volume }}]</td>
-                <td>{{ item.foodset.str_limitRegister }}</td>   
-            </tr>
-        {% endfor %}
-    </table>
-   </main>
-</div>
-<footer class="footer">
-     <p class="copyright">Copyright @ 2020 syokuzai_tarou</p>
-</footer>
+
+    </header>
+    <div class="wrapper">
+        <main class="main">
+            <a>トップページ</a><br>
+            <h2>{{ user.username }}さんの冷蔵庫</h2><br>
+            <div class="scroll-table">
+                <table class="osare-table col5t">
+
+                    <tr>
+                        {% for h in header %}
+                        <th class="fixed01">{{h}}</th>
+                        {% endfor %}
+                    </tr>
+
+                    {% for item in foods %}
+                    <tr>
+                        <td>{{ item.foodset.food }}</td>
+                        <td>{{ item.foodset.foodGram }} [{{ item.foodset.volume }}]</td>
+                        <td>{{ item.foodset.str_limitRegister }}</td>
+                    </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </main>
+    </div>
+    <footer class="footer">
+        <p class="copyright">Copyright @ 2020 syokuzai_tarou</p>
+    </footer>
 </body>
 
 </html>
