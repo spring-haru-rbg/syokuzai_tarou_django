@@ -7,6 +7,7 @@
     <title>LOGIN</title>
     <link rel="stylesheet" href="{% static 'refrigerator/css/reset.css' %}" />
     <link rel="stylesheet" href="{% static 'refrigerator/css/table.css' %}" />
+    <link rel="stylesheet" href="{% static 'refrigerator/css/deco_btn.css' %}" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -26,9 +27,9 @@
                 <p>{{ form.username }}</p>
                 <p>パスワード</p>
                 <p>{{ form.password }}</p>
-                <button type="submit">ログイン</button>
+                <button class="decorated-btn" type="submit">ログイン</button>
             </form>
-            <button><a href="{% url 'signup' %}">新規作成</a></button>
+            <button class="decorated-btn"><a href="{% url 'signup' %}">新規作成</a></button>
         </main>
     </div>
     <footer class="footer">
