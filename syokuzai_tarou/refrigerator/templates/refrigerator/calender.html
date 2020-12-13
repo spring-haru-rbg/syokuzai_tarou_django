@@ -1,70 +1,71 @@
 {% load static %}
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 
 <head>
-    <meta charset="UTF-8">
-    <title>テストページ</title>
-    <link rel="stylesheet" href="{% static 'refrigerator/css/reset.css' %}" />
-    
-    <link rel="stylesheet" href="{% static 'refrigerator/css/table.css' %}" />
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<link href="/static/bootstrap_datepicker_plus/css/datepicker-widget.css" type="text/css" media="all" rel="stylesheet">
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-<script type="text/javascript" src="/static/bootstrap_datepicker_plus/js/datepicker-widget.js"></script> 
-<link rel="stylesheet" href="{% static 'refrigerator/css/hamburger.css' %}" />
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/calender.css' %}" />
+   
+    <title>おなかすいた</title>
 </head>
 
 <body>
     <header class="header">
-        <h1 class="logo">サンプルサイト</h1>
-        <div class="outer-menu">
-            <input class="checkbox-toggle" type="checkbox" />
-            <div class="hamburger">
-            <div></div>
-            </div>
-            <div class="menu">
-                <div>
-                    <div>
-                        <ul>
-                            <hu>Hey！<font color="blue">{{ user.username }}</font></hu>
-                            <li><a href="{% url 'logout' %}">ログアウト</a></li>
-                            <li><a href="{% url 'password_change' %}">パスワード変更</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <h1 class="logo">食材残さないよ太郎</h1>
+        
         <nav class="global-nav">
             <ul>
-                <li class="nav-item active"><a href="#">HOME</a></li>
-                <li class="nav-item"><a href="#">ABOUT</a></li>
-                <li class="nav-item"><a href="#">NEWS</a></li>
-                <li class="nav-item"><a href="#">TOPICS</a></li>
-                <li class="nav-item"><a href="#">DOCS</a></li>
-                <li class="nav-item"><a href="#">BLOG</a></li>
+               
             </ul>
         </nav>
-    </header>
-    <div class="wrapper">
-        <main class="main">
-            <form action="{% url 'calender' %}" method="post">
-                {% csrf_token %}
-               
-                {{ form_foodset.as_table }}
-                <tr>
-                    <td></td>
-                    <td><input type="submit" value="登録"></td>
-                </tr>
-            </form>
-        </main>
-    </div>
-    <footer class="footer">
-        <p class="copyright">Copyright @ 2020 syokuzai_tarou</p>
-    </footer>
+
+   
+</header>
+<div class="wrapper">
+   <main class="main">
+    <a>トップページ</a><br>
+    <table>
+        <tr>
+          <th class="fixed01">見出し</th>
+          <th class="fixed01">見出し</th>
+          <th class="fixed01">見出し</th>
+        </tr>
+        <tr>
+          <td>テキスト</td>
+          <td>テキスト</td>
+          <td>テキスト</td>
+        </tr>
+        <tr>
+          <td>テキスト</td>
+          <td>テキスト</td>
+          <td>テキスト</td>
+        </tr>
+        <tr>
+            <td>テキスト</td>
+            <td>テキスト</td>
+            <td>テキスト</td>
+          </tr>
+          <tr>
+            <td>テキスト</td>
+            <td>テキスト</td>
+            <td>テキスト</td>
+          </tr>
+          <tr>
+            <td>テキスト</td>
+            <td>テキスト</td>
+            <td>テキスト</td>
+          </tr>
+          <tr>
+            <td>テキスト</td>
+            <td>テキスト</td>
+            <td>テキスト</td>
+          </tr>
+      </table>
+   </main>
+</div>
+<footer class="footer">
+     <p class="copyright">Copyright @ 2020 syokuzai_tarou</p>
+</footer>
 </body>
 
 </html>

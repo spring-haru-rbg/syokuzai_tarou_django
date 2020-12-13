@@ -42,24 +42,18 @@
                 
             </ul>
         </nav>
-
    
 </header>
 <div class="wrapper">
    <main class="main">
     <a>トップページ</a><br>
-    <a>{{ user.username }}さんの冷蔵庫</a><br>
+    <h2>{{ user.username }}さんの冷蔵庫</h2><br>
     <table>
         <tr>
-            <thead>
         {% for h in header %}
-              <th>{{h}}</th>  
+              <th class="fixed01">{{h}}</th>
         {% endfor %}
-            </thead>
         </tr>
-    </table>
-        <div class="scrollArea deco" ::-webkit-scrollbar-thumb>
-            <table>
         {% for item in foods %}
             <tr>
                 <!--
@@ -70,9 +64,7 @@
                 <td>{{ item.foodset.str_limitRegister }}</td>   
             </tr>
         {% endfor %}
-        
     </table>
-        </div>
    </main>
 </div>
 <footer class="footer">
