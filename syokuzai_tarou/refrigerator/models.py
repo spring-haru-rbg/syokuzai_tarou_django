@@ -31,7 +31,7 @@ class FoodSet(models.Model):
     foodGram = models.IntegerField(default=0,validators=[check_gram])
     volume = models.CharField(default='個',max_length=10)#数量の単位
     def __str__(self):
-        return str(self.food)  + " [ " + str(self.limitRegister) + " ] " + str(self.foodGram)
+        return str(self.food) 
     
     def str_limitRegister(self):
         return str(self.limitRegister)
