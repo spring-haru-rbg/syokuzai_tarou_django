@@ -252,3 +252,10 @@ tfoot td {
     background: #567947;
     /*border: 3px solid #b5d8a7;*/
 }
+
+
+/*　フォームのリストマーク削除　*/
+
+ul {
+    list-style-type: none;
+}
