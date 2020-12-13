@@ -3,7 +3,7 @@
 <html lang="ja">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/table.css' %}" />
     <link rel="stylesheet" href="{% static 'refrigerator/css/hamburger.css' %}" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <title>{{ title }}</title>
@@ -43,6 +43,14 @@
     <div class="wrapper">
        <main class="main">
         <a>レシピ表示ページ</a>
+        <form action="{% url 'recipe' %}" method="POST" >
+            {%  csrf_token %}
+            <tr>
+                <input type="hidden"  value="__foods_form__">
+                {{ foods_form }}
+            </tr>
+            <input class="decorated-btn" type="submit" value="レシピ検索">
+        </form>
     </main>
     </div>
     <footer class="footer">

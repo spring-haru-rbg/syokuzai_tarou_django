@@ -1,12 +1,26 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-#from .forms import *
-from .models import *
+from .forms import *
+from refrigerator.models import *
 
 # Create your views here.
 
 @login_required
 def recipe_select(request):
+    foods = Refrigerator.objects.filter(user=request.user).order_by('foodset').reverse()
+    header = ['食材名','数量','賞味・消費期限']
+    #POST送信時の処理
+    if (request.method == 'POST'):
+     #Foodsのチェック更新時の処理
+        checks_value = request.POST.getlist('foods')
+        for item in checks_value:
+            recipe_data = Refrigerator.objects.get(id=item) 
+        return redirect(to='/recipe')
+            
+    #GETアクセス時の処理
+    else:
+        #フォームの用意
+        foodsform = RecipeForm(request.user,foods=foods)
     params = {
         'title' : 'レシピ表示',
         'text' : 'レシピ表示ページ',
@@ -24,6 +38,9 @@ def recipe_select(request):
         'goto_delete_text' : '削除',
         'goto_recipe' : 'recipe',
         'goto_recipe_text' : 'レシピ検索',
+        #checkbox
+        'foods_form' : foodsform,
+        'foods' : foods,
     }
     return render(request, 'recipe/recipe_select.html',params)
 
