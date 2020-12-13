@@ -43,7 +43,7 @@
     <div class="wrapper">
        <main class="main">
         <a>レシピ表示ページ</a>
-        <form action="{% url 'recipe' %}" method="POST" >
+        <form action="{% url 'recipe' %}" method="post" >
             {%  csrf_token %}
             <tr>
                 <input type="hidden"  value="__foods_form__">
