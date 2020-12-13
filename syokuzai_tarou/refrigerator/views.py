@@ -15,8 +15,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def refrigerator(request):
-    data = Food.objects.all()
-    foods = Refrigerator.objects.all().order_by('foodset').reverse()
+    foods = Refrigerator.objects.filter(user=request.user).order_by('foodset').reverse()
     header = ['食材名','数量','賞味・消費期限']
     params = {
         'title' : '食材残さないよ太郎',
@@ -34,8 +33,6 @@ def refrigerator(request):
         'goto_recipe_select_text' : 'レシピ表示',
         'goto_delete' : 'food_delete',
         'goto_delete_text' : '削除',
-        
-        'data' : data,
         'foods' : foods,
         'header': header
     }
@@ -78,8 +75,7 @@ def food_register(request):
   
 @login_required
 def food_change_select(request):
-    data = Food.objects.all()
-    foods = Refrigerator.objects.all().order_by('foodset').reverse()
+    foods = Refrigerator.objects.filter(user=request.user).order_by('foodset').reverse()
     #POST送信時の処理
     if (request.method == 'POST'):
      #Foodsのチェック更新時の処理
@@ -110,10 +106,7 @@ def food_change_select(request):
         'goto_recipe_select_text' : 'レシピ表示',
         'goto_delete' : 'food_delete',
         'goto_delete_text' : '削除',
-
-        'data' : data,
         'select_form' : selectform,
-
     }
     
     return render(request, 'refrigerator/food_change_select.html',params)
@@ -144,7 +137,6 @@ def food_change(request,num):
         'goto_delete_text' : '削除',
         'goto_change_refrigerator' : 'refrigerator',
         'goto_change_refrigerator_text' : '数量変更',
-
         'id' : num,
         'form' : FoodGramChangeForm(instance=foodset),
         'foodset' : foodset,
@@ -159,10 +151,10 @@ def food_search(request):
         form = SearchForm(request.POST)
         msg = '食品名を入れてください'
         search_name = request.POST['search']
-        foods = Refrigerator.objects.filter(foodset__food__foodName__icontains = search_name)
+        foods = Refrigerator.objects.filter(user=request.user).filter(foodset__food__foodName__icontains = search_name)
     else:
         form = SearchForm()
-        foods = Refrigerator.objects.all()
+        foods = Refrigerator.objects.filter(user=request.user)
         msg = '食品名を入れてください'
     params = {
         'title' : '食材検索',
@@ -179,7 +171,6 @@ def food_search(request):
         'goto_recipe_select_text' : 'レシピ表示',
         'goto_delete' : 'food_delete',
         'goto_delete_text' : '削除',
-
         'header': header,
         'form' : form,
         'foods' : foods,
@@ -236,8 +227,7 @@ def recipe(request):
 
 @login_required
 def food_delete(request):
-    data = Food.objects.all()
-    foods = Refrigerator.objects.all().order_by('foodset').reverse()
+    foods = Refrigerator.objects.filter(user=request.user).order_by('foodset').reverse()
     header = ['食材名','数量','賞味・消費期限']
     #POST送信時の処理
     if (request.method == 'POST'):
@@ -271,13 +261,10 @@ def food_delete(request):
         'goto_delete_text' : '削除',
         'goto_delete_refrigerator' : 'refrigerator',
         'goto_delete_refrigerator_text' : '食材削除',
-
-        'data' : data,
         #checkbox
         'foods_form' : foodsform,
         'foods' : foods,
-        'header': header
-        
+        'header': header    
     }
     
     return render(request, 'refrigerator/food_delete.html',params)
