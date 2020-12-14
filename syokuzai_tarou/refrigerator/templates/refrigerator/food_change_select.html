@@ -51,10 +51,17 @@
             </tr>
             <form action="{% url 'food_change_select'   %}" method="post">
                 {% csrf_token %}
-                <tr>
-                    {{ select_form }}
+                <table>
+                    {% for field in select_form %}
+                        {% for item in field %}
+                            <tr>
+                                <td>{{item}}</td>
+                            </tr>
+                        {% endfor %}
+                    {% endfor %}
+                    
                     <input type="hidden"  value="__select_form__">
-                </tr>
+                </table>
                 <input class="decorated-btn" type="submit" value="食材変更">
             </form>
     </main>
