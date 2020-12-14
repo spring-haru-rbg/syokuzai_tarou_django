@@ -8,7 +8,7 @@ from refrigerator.models import *
 @login_required
 def recipe_select(request):
     foods = Refrigerator.objects.filter(user=request.user).order_by('foodset').reverse()
-    header = ['食材名','数量','賞味・消費期限']
+    header = ['食材名']
     #POST送信時の処理
     if (request.method == 'POST'):
      #Foodsのチェック更新時の処理
@@ -41,6 +41,7 @@ def recipe_select(request):
         #checkbox
         'foods_form' : foodsform,
         'foods' : foods,
+        'header' : header,
     }
     return render(request, 'recipe/recipe_select.html',params)
 

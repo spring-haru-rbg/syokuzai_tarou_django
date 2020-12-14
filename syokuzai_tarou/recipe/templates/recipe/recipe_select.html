@@ -46,10 +46,23 @@
         <a>レシピ表示ページ</a>
         <form action="{% url 'recipe' %}" method="post" >
             {%  csrf_token %}
-            <tr>
+            <table>
+                <tr>
+                    <thead>
+                    {% for h in header %}
+                          <th>{{h}}</th>  
+                    {% endfor %}
+                    </thead>
+                </tr>
                 <input type="hidden"  value="__foods_form__">
-                {{ foods_form }}
-            </tr>
+                {% for field in foods_form %}
+                        {% for item in field %}
+                            <tr>
+                                <td>{{item}}</td>
+                            </tr>
+                        {% endfor %}
+                {% endfor %}
+            </table>
             <input class="decorated-btn" type="submit" value="レシピ検索">
         </form>
     </main>

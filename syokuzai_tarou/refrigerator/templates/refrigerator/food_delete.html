@@ -46,10 +46,16 @@
     <a>食材削除ページ</a>
     <form action="{% url 'food_delete'  %}" method="post">
         {% csrf_token %}
-        <tr>
+        <table>
             <input type="hidden"  value="__foods_form__">
-            {{ foods_form }}
-        </tr>
+            {% for field in foods_form %}
+                        {% for item in field %}
+                            <tr>
+                                <td>{{item}}</td>
+                            </tr>
+                        {% endfor %}
+                {% endfor %}
+        </table>
         <input class="decorated-btn" type="submit" value="食材削除">
     </form>
 </main>
