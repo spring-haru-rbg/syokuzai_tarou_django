@@ -6,6 +6,7 @@ from django.contrib.admin import widgets
 import bootstrap_datepicker_plus as datetimepicker
 from django.core.exceptions import ValidationError
 import os
+from django.forms import inlineformset_factory
 
 
 
@@ -58,6 +59,14 @@ class FoodSetRegisterForm(forms.ModelForm):
             raise ValidationError("数量は0以上にしてください")
         return foodGram
 
+RegisterFormSet = forms.inlineformset_factory(
+    parent_model=Food,
+    model=FoodSet,
+    extra=1,
+    fields=("limitRegister", "foodGram", "volume", "food"),
+    #fields='__all__',
+    form=FoodSetRegisterForm
+)
  
     #def clean(self):
      #   cleaned_data = super().clean()

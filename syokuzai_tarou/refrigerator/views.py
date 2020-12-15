@@ -281,14 +281,36 @@ def food_delete(request):
 
 
 def calender(request):
+    sample
     params = {
         'form_food' : FoodForm(),
         'form_foodset' : FoodSetRegisterForm(),
+        'text': request.POST.get('foodName'),
+        'text1':Food.objects.all().filter(foodName=request.POST.get('foodName')),
+        #textId':Food.objects.all().filter(foodName=request.POST.get('foodName'))
+        'text2':sample
     }
     if request.method == 'POST':
-        obj = FoodSet()
-        foodset = FoodSetForm(request.POST, instance=obj)
-        foodset.save()
-        return redirect(to='/refrigerator/calender')
+        obj1 = FoodSet()
+        obj2 = Food()
+        foodset = FoodSetRegisterForm(request.POST, instance=obj1)
+        food = FoodForm(request.POST, instance=obj2)
+
+        if food.is_valid(): #エラー処理
+            food.save()
+            #x=food.id
+        if foodset.is_valid():
+            foodset.food=request.POST.get('foodName')
+
+            #x=Food.objects.filter(foodName=request.POST.get('foodName'))
+            #idid=x..values_Food("id", flat=True)
+
+            x = Food.objects.all().filter(foodName=request.POST.get('foodName'))
+            sample=x.values(id)
+
+            #foodset_data = foodset.save()   
+            #refrigerator = Refrigerator.objects.create(user=request.user,foodset=foodset_data)
+            #refrigerator.save()
+        #return redirect(to='/refrigerator/calender')
 
     return render(request, 'refrigerator/calender.html',params)
