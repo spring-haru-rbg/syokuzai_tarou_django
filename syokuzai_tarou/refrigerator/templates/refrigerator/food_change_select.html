@@ -51,12 +51,13 @@
             </tr>
             <form action="{% url 'food_change_select'   %}" method="post">
                 {% csrf_token %}
-                <table>
+                <div class="scroll-table">
+                    <table class="osare-table col5t">  
                     <tr>
                         <thead>
-                        {% for h in header %}
-                              <th>{{h}}</th>  
-                        {% endfor %}
+                            {% for h in header %}
+                            <th class="fixed01">{{h}}</th>
+                            {% endfor %}
                         </thead>
                     </tr>
                     {% for item,data in foodlist %}
@@ -69,6 +70,7 @@
                     
                     <input type="hidden"  value="__select_form__">
                 </table>
+            </div>
                 <input class="decorated-btn" type="submit" value="食材変更">
             </form>
     </main>
