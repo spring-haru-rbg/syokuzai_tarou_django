@@ -13,7 +13,7 @@
 
 <body>
     <header class="header">
-        <h1 class="logo">食材残さないよ太郎</h1>
+        <h1><a href="{% url 'refrigerator' %}"><p class="logo" alt="食材残さないよ太郎"></a></h1>
         <div class="outer-menu">
             <input class="checkbox-toggle" type="checkbox" />
             <div class="hamburger">
@@ -51,10 +51,19 @@
             </tr>
             <form action="{% url 'food_change_select'   %}" method="post">
                 {% csrf_token %}
-                <tr>
-                    {{ select_form }}
+                <div class="scroll-table">
+                    <table class="osare-table col5t">  
+                    {% for field in select_form %}
+                        {% for item in field %}
+                            <tr>
+                                <td>{{item}}</td>
+                            </tr>
+                        {% endfor %}
+                    {% endfor %}
+                    
                     <input type="hidden"  value="__select_form__">
-                </tr>
+                </table>
+                </div>
                 <input class="decorated-btn" type="submit" value="食材変更">
             </form>
     </main>

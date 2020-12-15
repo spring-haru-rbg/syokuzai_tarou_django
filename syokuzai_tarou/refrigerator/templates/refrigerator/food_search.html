@@ -13,7 +13,7 @@
 
 <body>
     <header class="header">
-        <h1 class="logo">食材残さないよ太郎</h1>
+        <h1><a href="{% url 'refrigerator' %}"><p class="logo" alt="食材残さないよ太郎"></a></h1>
         <div class="outer-menu">
             <input class="checkbox-toggle" type="checkbox" />
             <div class="hamburger">
@@ -53,6 +53,7 @@
             </form>   
             <div class="scroll-table">
                 <table class="osare-table col5t">    
+        <hr>
             <tr>
             <thead>
             {% for h in header %}
@@ -60,6 +61,7 @@
             {% endfor %}
             </thead>
             </tr>
+
             {% for item in foods %}
                 <tr>
                     <td>{{ item.foodset.food }}</td>
@@ -69,6 +71,8 @@
             {% endfor %}
         </table>
     </div>
+            </table>
+        </div>
     </main>
     </div>
     <footer class="footer">

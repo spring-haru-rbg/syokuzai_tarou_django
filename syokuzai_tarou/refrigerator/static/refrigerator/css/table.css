@@ -52,16 +52,25 @@ a:active {
 }
 
 .logo {
-    width: 225px;
-    height: 56px;
+    width: 400px;
+    height: 70px;
     margin: 0 auto;
     color: #eb5a09;
-    /*ロゴ作れば追加する p36
-    background: url('') no-repeat;
+
+    /*スマホ化するときに使うっぽい？*/ 
+    /*   
+    max-width:200px;
+    margin: auto;
+    height: 70px;
+    display: block;
+    */
+    
+    /*ロゴ作れば追加する p36*/
+    background: url('../images/logo_tori2.png') no-repeat;
     overflow: hidden;
     text-indent: 100%;
     white-space: nowrap;
-    */
+    
 }
 
 .logo a {

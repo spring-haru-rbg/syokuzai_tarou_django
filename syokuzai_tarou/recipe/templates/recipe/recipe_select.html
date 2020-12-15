@@ -11,7 +11,7 @@
 </head>
 <body>
     <header class="header">
-        <h1 class="logo">食材残さないよ太郎</h1>
+        <h1><a href="{% url 'refrigerator' %}"><p class="logo" alt="食材残さないよ太郎"></a></h1>
         <div class="outer-menu">
             <input class="checkbox-toggle" type="checkbox" />
             <div class="hamburger">
@@ -46,10 +46,13 @@
         <a>レシピ表示ページ</a>
         <form action="{% url 'recipe' %}" method="post" >
             {%  csrf_token %}
-            <tr>
+                <tr>
                 <input type="hidden"  value="__foods_form__">
-                {{ foods_form }}
-            </tr>
+                {% for field in foods_form %}
+                        {% for item in field %}
+                            <tr>
+                                <td>{{item}}</td>
+                            </tr>
             <input class="decorated-btn" type="submit" value="レシピ検索">
         </form>
     </main>

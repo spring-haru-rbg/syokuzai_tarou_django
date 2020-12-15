@@ -9,11 +9,11 @@
     <link rel="stylesheet" href="{% static 'refrigerator/css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'refrigerator/css/hamburger.css' %}" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-</head>
+   </head>
 
 <body>
     <header class="header">
-        <h1 class="logo">食材残さないよ太郎</h1>
+        <h1><a href="{% url 'refrigerator' %}"><p class="logo" alt="食材残さないよ太郎"></a></h1>
         <div class="outer-menu">
             <input class="checkbox-toggle" type="checkbox" />
             <div class="hamburger">
