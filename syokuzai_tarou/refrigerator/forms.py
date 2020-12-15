@@ -82,6 +82,7 @@ class FoodGramChangeForm(forms.ModelForm):
         model = FoodSet
         
         fields = ['foodGram']
+        labels = {'foodGram':'',}
 
 #検索フォーム
 class SearchForm(forms.Form):
