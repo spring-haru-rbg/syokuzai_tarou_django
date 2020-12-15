@@ -51,12 +51,12 @@
                     <p align="left">{{msg}}</p>
                     <p align="left">{{form.search}}<th><input class="decorated-btn" type="submit" value="検索"></th></p>   
             </form>   
-        <hr>
-        <table>
+            <div class="scroll-table">
+                <table class="osare-table col5t">    
             <tr>
             <thead>
             {% for h in header %}
-                  <th>{{h}}</th>  
+            <th class="fixed01">{{h}}</th>
             {% endfor %}
             </thead>
             </tr>
@@ -65,9 +65,10 @@
                     <td>{{ item.foodset.food }}</td>
                     <td>{{ item.foodset.foodGram }} [{{ item.foodset.volume }}]</td>
                     <td>{{ item.foodset.str_limitRegister }}</td>   
-                </tr>
+            </tr>
             {% endfor %}
         </table>
+    </div>
     </main>
     </div>
     <footer class="footer">
