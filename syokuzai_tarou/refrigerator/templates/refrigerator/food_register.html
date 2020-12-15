@@ -1,15 +1,74 @@
 {% load static %}
 <!doctype html>
 <html lang="ja">
+
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/style.css' %}" />
-    <title>hello</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/table.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/deco_btn.css' %}" />
+    <title>{{title}}</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<link href="/static/bootstrap_datepicker_plus/css/datepicker-widget.css" type="text/css" media="all" rel="stylesheet">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="/static/bootstrap_datepicker_plus/js/datepicker-widget.js"></script> 
+<link rel="stylesheet" href="{% static 'refrigerator/css/hamburger.css' %}" />
 </head>
+
 <body>
-    <h1>{{ title }}</h1>
+    <header class="header">
+        <h1><a href="{% url 'refrigerator' %}"><p class="logo" alt="食材残さないよ太郎"></a></h1>
+        <div class="outer-menu">
+            <input class="checkbox-toggle" type="checkbox" />
+            <div class="hamburger">
+            <div></div>
+            </div>
+            <div class="menu">
+                <div>
+                    <div>
+                        <ul>
+                            <hu>Hey！<font color="#eb5a09">{{ user.username }}</font></hu>
+                            <li><a href="{% url 'logout' %}">ログアウト</a></li>
+                            <li><a href="{% url 'password_change' %}">パスワード変更</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="global-nav">
+             <ul>
+                <li class="nav-item"><a href="{% url goto_refrigerator %}">{{ goto_refrigerator_text }}</a></li>
+                <li class="nav-item active"><a href="{% url goto_register %}">{{ goto_register_text }}</a></li>
+                <li class="nav-item"><a href="{% url goto_change_select %}">{{ goto_change_select_text }}</a></li>
+                <li class="nav-item"> <a href="{% url goto_search %}">{{ goto_search_text }}</a></li>
+                <li class="nav-item"><a href="{% url goto_recipe_select %}">{{ goto_recipe_select_text }}</a></li>
+                <li class="nav-item"><a href="{% url goto_delete %}">{{ goto_delete_text }}</a></li>
+                
+            </ul>
+        </nav>
     
-    <a href="{% url goto_refrigerator %}">{{ goto_refrigerator_text }}</a>
-    <p>{{ text }}</p>
+    </header>
+    <div class="wrapper">
+    <main class="main">
+        <h2>食材登録ページ</h2>
+        <table align="center">
+            <form action="{% url 'food_register' %}" method="post">
+                {% csrf_token %}        
+                <p align="center">{{ form_foodset.as_table }}</p>
+                <tr>
+                    <td></td>
+                    <td align="center"><input class="decorated-btn" type="submit" value="登録"></td>
+                </tr>
+            </form>
+        </table>
+    </main>
+    </div>
+
+    <footer class="footer">
+        <p class="copyright">Copyright @ 2020 syokuzai_tarou</p>
+    </footer>
 </body>
+
 </html>

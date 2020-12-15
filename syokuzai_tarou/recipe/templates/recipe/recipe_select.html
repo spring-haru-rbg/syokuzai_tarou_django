@@ -1,16 +1,14 @@
 {% load static %}
 <!doctype html>
 <html lang="ja">
-
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/table.css' %}" />
     <link rel="stylesheet" href="{% static 'refrigerator/css/hamburger.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/deco_btn.css' %}" />
+    <link rel="stylesheet" href="{% static 'refrigerator/css/deco_btn.css' %}" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-    <title>{{title}}</title>
+    <title>{{ title }}</title>
 </head>
-
 <body>
     <header class="header">
         <h1><a href="{% url 'refrigerator' %}"><p class="logo" alt="食材残さないよ太郎"></a></h1>
@@ -35,47 +33,42 @@
             <ul>
                 <li class="nav-item"><a href="{% url goto_refrigerator %}">{{ goto_refrigerator_text }}</a></li>
                 <li class="nav-item"><a href="{% url goto_register %}">{{ goto_register_text }}</a></li>
-                <li class="nav-item active"><a href="{% url goto_change_select %}">{{ goto_change_select_text }}</a></li>
+                <li class="nav-item"><a href="{% url goto_change_select %}">{{ goto_change_select_text }}</a></li>
                 <li class="nav-item"> <a href="{% url goto_search %}">{{ goto_search_text }}</a></li>
-                <li class="nav-item"><a href="{% url goto_recipe_select %}">{{ goto_recipe_select_text }}</a></li>
+                <li class="nav-item active"><a href="{% url goto_recipe_select %}">{{ goto_recipe_select_text }}</a></li>
                 <li class="nav-item"><a href="{% url goto_delete %}">{{ goto_delete_text }}</a></li>
+               
             </ul>
         </nav>
     </header>
     <div class="wrapper">
        <main class="main">
-        <a>食材登録変更を選択するページ</a>
-            <tr>
-                <th></th>
-                <th>食材名</th>
-            </tr>
-            <form action="{% url 'food_change_select'   %}" method="post">
-                {% csrf_token %}
-                <table>
-                    <tr>
-                        <thead>
-                        {% for h in header %}
-                              <th>{{h}}</th>  
-                        {% endfor %}
-                        </thead>
-                    </tr>
-                    {% for item,data in foodlist %}
-                            <tr>
-                                <td>{{item}}</td>
-                                <td>{{data.foodset.foodGram}}{{data.foodset.volume}}</td>
-                                <td>{{data.foodset.str_limitRegister}}</td>
-                            </tr>
+        <a>レシピ表示ページ</a>
+        <form action="{% url 'recipe' %}" method="post" >
+            {%  csrf_token %}
+            <table>
+                <tr>
+                    <thead>
+                    {% for h in header %}
+                          <th>{{h}}</th>  
                     {% endfor %}
-                    
-                    <input type="hidden"  value="__select_form__">
-                </table>
-                <input class="decorated-btn" type="submit" value="食材変更">
-            </form>
+                    </thead>
+                </tr>
+                <input type="hidden"  value="__foods_form__">
+                {% for item,data in foodlist %}
+                <tr>
+                    <td>{{item}}</td>
+                    <td>{{data.foodset.foodGram}}{{data.foodset.volume}}</td>
+                    <td>{{data.foodset.str_limitRegister}}</td>
+                </tr>
+            {% endfor %}
+            </table>
+            <input class="decorated-btn" type="submit" value="レシピ検索">
+        </form>
     </main>
     </div>
     <footer class="footer">
          <p class="copyright">Copyright @ 2020 syokuzai_tarou</p>
     </footer>
 </body>
-
 </html>

@@ -1,0 +1,59 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SIGN UP</title>
+    <link rel="stylesheet" href="{% static 'refrigerator/css/reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'refrigerator/css/table.css' %}" />
+    <link rel="stylesheet" href="{% static 'refrigerator/css/deco_btn.css' %}" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <h1><a href="{% url 'refrigerator' %}"><p class="logo" alt="食材残さないよ太郎"></a></h1>
+        <nav class="global-nav">
+            <ul>
+                <li class="nav-item active"><a href="{% url 'refrigerator' %}">ログイン</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="wrapper">
+        <main class="main">
+            <h1>新規登録</h1>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <p>
+                    {{ form.username }}</p>
+                <p style="margin:20px;">
+                    <p>
+                        {{ form.password1 }}</p>
+                    <p style="margin:20px;">
+                        <p>
+                            {{ form.password2 }}</p>
+                        <p style="margin:20px;">
+                            <p>パスワードは他の個人情報と似てはいけません。</p>
+                            <p style="margin:20px;">
+                                <p>パスワードは8文字以上にする必要があります。</p>
+                                <p style="margin:20px;">
+                                    <p>パスワードは、一般的に使用されるパスワードにすることはできません。</p>
+                                    <p style="margin:20px;">
+                                        <p>パスワードを完全に数字のみにすることはできません。</p>
+                                        <p style="margin:20px;">
+                                            <button class="decorated-btn" type="submit">Sign up</button>
+
+            </form>
+
+        </main>
+    </div>
+    <footer class="footer">
+        <p class="copyright">Copyright @ 2020 syokuzai_tarou</p>
+    </footer>
+
+</body>
+
+</html>

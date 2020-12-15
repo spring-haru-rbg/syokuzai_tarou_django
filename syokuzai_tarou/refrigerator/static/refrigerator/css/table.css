@@ -1,0 +1,270 @@
+@charset "UTF-8";
+html {
+    font-size: 62.5%;
+}
+
+body {
+    color: #333;
+    font-size: 1.2rem;
+    font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+    background: #e6dfcb url('../images/background.png');
+}
+
+*,
+*::before,
+* ::after {
+    box-sizing: border-box;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+    color: #567947;
+    text-decoration: none;
+}
+
+.header {
+    width: 100%;
+    padding: 28px 0 10px;
+    background-color: #b5d8a7;
+}
+
+.wrapper {
+    height: 200%;
+    width: 970px;
+    margin: 30px auto 40px;
+}
+
+.main {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    height: 500px;
+    text-align: center;
+}
+
+.footer {
+    width: 100%;
+    padding: 20px 0 30px;
+    background-color: #b5d8a7;
+    color: #fff;
+}
+
+.logo {
+    width: 400px;
+    height: 70px;
+    margin: 0 auto;
+    color: #eb5a09;
+
+    /*スマホ化するときに使うっぽい？*/ 
+    /*   
+    max-width:200px;
+    margin: auto;
+    height: 70px;
+    display: block;
+    */
+    
+    /*ロゴ作れば追加する p36*/
+    background: url('../images/logo_tori2.png') no-repeat;
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+    
+}
+
+.logo a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.global-nav {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.global-nav .nav-item {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.global-nav .nav-item a {
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 8px;
+    color: #666;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    transition: 0.15s;
+}
+
+
+/*リンクにホバーしたときに色をつける*/
+
+.global-nav .nav-item.active a,
+.global-nav .nav-item a:hover {
+    background-color: #567947;
+    color: #fff;
+}
+
+
+/* copyright */
+
+.copyright {
+    margin-top: 30px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+
+/* spacing */
+
+table {
+    width: 70%;
+    margin: 0 auto;
+    table-layout: fixed;
+}
+
+th,
+td {
+    height: 10px;
+    vertical-align: middle;
+    padding: 15px;
+}
+
+.fixed01,
+.fixed02 {
+    top: 0;
+    position: sticky;
+    font-weight: bold;
+    color: #fff;
+    background: #567947;
+    border-radius: 10px 10px 0px 0px;
+    /*角の丸み*/
+}
+
+.fixed01:before,
+.fixed02:before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 100%;
+    height: 100%;
+}
+
+.fixed01 {
+    left: 0;
+}
+
+.fixed02 {
+    left: 199px;
+}
+
+.scroll-table {
+    width: 100%;
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.osare-table {
+    width: 100%;
+    table-layout: fixed;
+    border: none !important;
+    border-collapse: separate;
+    border-spacing: 7px 3px;
+}
+
+table tr:nth-child(odd) td {
+    background: #d5e9d8;
+}
+
+table tr:nth-child(even) td {
+    background: #b5d8a7;
+}
+
+@media (max-width: 767px) {
+    .col6t th,
+    .col6t td {
+        font-size: 0.4em;
+        padding: 10px 0px;
+    }
+    .col5t th,
+    .col5t td {
+        font-size: 0.5em;
+        padding: 10px 0px;
+    }
+    .col4t th,
+    .col4t td {
+        font-size: 0.7em;
+        padding: 10px 5px;
+    }
+    .col3t th,
+    .col3t td {
+        font-size: 0.8em;
+        padding: 10px 10px;
+    }
+}
+
+
+/*thead th:nth-child(1) {
+    width: 30%;
+  }
+  
+  thead th:nth-child(2) {
+    width: 20%;
+  }
+  
+  thead th:nth-child(3) {
+    width: 15%;
+  }
+  
+  thead th:nth-child(4) {
+    width: 35%;
+  }
+  /*
+  th, td {
+    padding: 20px;
+  }
+*/
+
+
+/*th{
+    padding: 20px;
+  }
+  td{
+    padding: 20px;
+    background:  #b5d8a7;
+    border: 1px solid #ddd;
+  }
+
+  thead, tfoot {
+  
+    background: url(leopardskin.jpg);
+    color: white;
+    text-shadow: 1px 1px 1px black;
+
+  }
+  */
+
+thead th,
+tfoot th,
+tfoot td {
+    /*background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));*/
+    border-radius: 10px;
+    /*角の丸み*/
+    background: #567947;
+    /*border: 3px solid #b5d8a7;*/
+}
+
+
+/*　フォームのリストマーク削除　*/
+
+ul {
+    list-style-type: none;
+}

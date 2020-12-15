@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>LOGIN</title>
+    <link rel="stylesheet" href="{% static 'refrigerator/css/reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'refrigerator/css/table.css' %}" />
+    <link rel="stylesheet" href="{% static 'refrigerator/css/deco_btn.css' %}" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+
+<body>
+    <header class="header">
+        <h1 class="logo">食材残さないよ太郎</h1>
+    </header>
+
+
+    <div class="wrapper">
+        <main class="main">
+            <h1>LOGIN</h1>
+            <form method="post">
+                {% csrf_token %}
+                <p>ユーザー名</p>
+                <p>{{ form.username }}</p>
+                <p>パスワード</p>
+                <p>{{ form.password }}</p>
+                <button class="decorated-btn" type="submit">ログイン</button>
+            </form>
+            <button class="decorated-btn"><a href="{% url 'signup' %}">新規作成</a></button>
+        </main>
+    </div>
+    <footer class="footer">
+        <p class="copyright">Copyright @ 2020 syokuzai_tarou</p>
+    </footer>
+</body>
+
+</html>

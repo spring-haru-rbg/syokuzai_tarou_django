@@ -1,0 +1,23 @@
+.decorated-btn{
+    margin-top: 15px;
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    transition: 0.15s;
+    background-color: #567947;
+    border: 0px solid #567947;
+    -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+}
+.decorated-btn a,
+.decorated-btn a:hover,
+.decorated-btn a:active{
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+}

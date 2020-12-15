@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/table.css' %}" />
     <link rel="stylesheet" href="{% static 'refrigerator/css/hamburger.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/deco_btn.css' %}" />
+    <link rel="stylesheet" href="{% static 'refrigerator/css/deco_btn.css' %}" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <title>{{title}}</title>
 </head>
@@ -35,42 +35,41 @@
             <ul>
                 <li class="nav-item"><a href="{% url goto_refrigerator %}">{{ goto_refrigerator_text }}</a></li>
                 <li class="nav-item"><a href="{% url goto_register %}">{{ goto_register_text }}</a></li>
-                <li class="nav-item active"><a href="{% url goto_change_select %}">{{ goto_change_select_text }}</a></li>
-                <li class="nav-item"> <a href="{% url goto_search %}">{{ goto_search_text }}</a></li>
+                <li class="nav-item"><a href="{% url goto_change_select %}">{{ goto_change_select_text }}</a></li>
+                <li class="nav-item active"> <a href="{% url goto_search %}">{{ goto_search_text }}</a></li>
                 <li class="nav-item"><a href="{% url goto_recipe_select %}">{{ goto_recipe_select_text }}</a></li>
                 <li class="nav-item"><a href="{% url goto_delete %}">{{ goto_delete_text }}</a></li>
+                
             </ul>
         </nav>
     </header>
     <div class="wrapper">
        <main class="main">
-        <a>食材登録変更を選択するページ</a>
-            <tr>
-                <th></th>
-                <th>食材名</th>
-            </tr>
-            <form action="{% url 'food_change_select'   %}" method="post">
+        <a>食材検索ページ</a>
+            <form action="{% url 'food_search' %}" method="post">
                 {% csrf_token %}
-                <table>
-                    <tr>
-                        <thead>
-                        {% for h in header %}
-                              <th>{{h}}</th>  
-                        {% endfor %}
-                        </thead>
-                    </tr>
-                    {% for item,data in foodlist %}
-                            <tr>
-                                <td>{{item}}</td>
-                                <td>{{data.foodset.foodGram}}{{data.foodset.volume}}</td>
-                                <td>{{data.foodset.str_limitRegister}}</td>
-                            </tr>
-                    {% endfor %}
-                    
-                    <input type="hidden"  value="__select_form__">
-                </table>
-                <input class="decorated-btn" type="submit" value="食材変更">
-            </form>
+                    <p align="left">{{msg}}</p>
+                    <p align="left">{{form.search}}<th><input class="decorated-btn" type="submit" value="検索"></th></p>   
+            </form>   
+            <div class="scroll-table">
+                <table class="osare-table col5t">    
+            <tr>
+            <thead>
+            {% for h in header %}
+            <th class="fixed01">{{h}}</th>
+            {% endfor %}
+            </thead>
+            </tr>
+
+            {% for item in foods %}
+                <tr>
+                    <td>{{ item.foodset.food }}</td>
+                    <td>{{ item.foodset.foodGram }} [{{ item.foodset.volume }}]</td>
+                    <td>{{ item.foodset.str_limitRegister }}</td>   
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
     </main>
     </div>
     <footer class="footer">
