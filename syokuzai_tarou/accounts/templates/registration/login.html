@@ -21,6 +21,7 @@
     <div class="wrapper">
         <main class="main">
             <h1>LOGIN</h1>
+            <div class="form">
             <form method="post">
                 {% csrf_token %}
                 <p>ユーザー名</p>
@@ -30,6 +31,7 @@
                 <button class="decorated-btn" type="submit">ログイン</button>
             </form>
             <button class="decorated-btn"><a href="{% url 'signup' %}">新規作成</a></button>
+        </div>
         </main>
     </div>
     <footer class="footer">

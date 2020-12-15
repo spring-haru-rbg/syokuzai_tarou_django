@@ -89,5 +89,6 @@ class SearchForm(forms.Form):
     search = forms.CharField(label=False,required=False)
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.fields['search'].widget.attrs['class'] = 'form-control'
         self.fields['search'].widget.attrs['placeholder'] = '食品名'
         
