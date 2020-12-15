@@ -53,12 +53,13 @@
     <a>食材削除ページ</a>
     <form action="{% url 'food_delete'  %}" method="post">
         {% csrf_token %}
-        <table>
+        <div class="scroll-table">
+            <table class="osare-table col5t">  
             <tr>
                 <thead>
-                {% for h in header %}
-                      <th>{{h}}</th>  
-                {% endfor %}
+                    {% for h in header %}
+                    <th class="fixed01">{{h}}</th>
+                    {% endfor %}
                 </thead>
             </tr>
             <input type="hidden"  value="__foods_form__">
@@ -70,6 +71,7 @@
                             </tr>
                         {% endfor %}
         </table>
+        </div>
         <!--
         <input class="decorated-btn" type="submit" value="食材削除">
         -->
