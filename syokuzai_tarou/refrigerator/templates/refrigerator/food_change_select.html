@@ -63,7 +63,7 @@
                     {% for item,data in foodlist %}
                             <tr>
                                 <td>{{item}}</td>
-                                <td>{{data.foodset.foodGram}}{{data.foodset.volume}}</td>
+                                <td>{{ data.foodset.foodGram }} [{{ data.foodset.volume }}]</td>
                                 <td>{{data.foodset.str_limitRegister}}</td>
                             </tr>
                     {% endfor %}
