@@ -8,7 +8,7 @@ from django.core.exceptions import ValidationError
 
 # Foodクラス
 class Food(models.Model):
-    foodName = models.CharField(max_length=20) #食材名
+    foodName = models.CharField(max_length=20, unique=True) #食材名
 
 #FoodSetクラス
     def __str__(self):
