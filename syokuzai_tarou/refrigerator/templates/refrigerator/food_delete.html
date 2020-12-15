@@ -54,14 +54,21 @@
     <form action="{% url 'food_delete'  %}" method="post">
         {% csrf_token %}
         <table>
+            <tr>
+                <thead>
+                {% for h in header %}
+                      <th>{{h}}</th>  
+                {% endfor %}
+                </thead>
+            </tr>
             <input type="hidden"  value="__foods_form__">
-            {% for field in foods_form %}
-                        {% for item in field %}
+                        {% for item,data in foodlist %}
                             <tr>
                                 <td>{{item}}</td>
+                                <td>{{data.foodset.foodGram}}{{data.foodset.volume}}</td>
+                                <td>{{data.foodset.str_limitRegister}}</td>
                             </tr>
                         {% endfor %}
-                {% endfor %}
         </table>
         <!--
         <input class="decorated-btn" type="submit" value="食材削除">

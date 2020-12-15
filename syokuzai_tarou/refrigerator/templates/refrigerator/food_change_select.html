@@ -51,14 +51,20 @@
             </tr>
             <form action="{% url 'food_change_select'   %}" method="post">
                 {% csrf_token %}
-                <div class="scroll-table">
-                    <table class="osare-table col5t">  
-                    {% for field in select_form %}
-                        {% for item in field %}
+                <table>
+                    <tr>
+                        <thead>
+                        {% for h in header %}
+                              <th>{{h}}</th>  
+                        {% endfor %}
+                        </thead>
+                    </tr>
+                    {% for item,data in foodlist %}
                             <tr>
                                 <td>{{item}}</td>
+                                <td>{{data.foodset.foodGram}}{{data.foodset.volume}}</td>
+                                <td>{{data.foodset.str_limitRegister}}</td>
                             </tr>
-                        {% endfor %}
                     {% endfor %}
                     
                     <input type="hidden"  value="__select_form__">

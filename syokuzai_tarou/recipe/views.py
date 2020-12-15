@@ -42,6 +42,7 @@ def recipe_select(request):
         'foods_form' : foodsform,
         'foods' : foods,
         'header' : header,
+        'foodlist' : foodlist,
     }
     return render(request, 'recipe/recipe_select.html',params)
 
