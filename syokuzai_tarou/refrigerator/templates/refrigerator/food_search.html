@@ -53,7 +53,6 @@
             </form>   
             <div class="scroll-table">
                 <table class="osare-table col5t">    
-        <hr>
             <tr>
             <thead>
             {% for h in header %}
@@ -67,10 +66,10 @@
                     <td>{{ item.foodset.food }}</td>
                     <td>{{ item.foodset.foodGram }} [{{ item.foodset.volume }}]</td>
                     <td>{{ item.foodset.str_limitRegister }}</td>   
-                </tr>
+            </tr>
             {% endfor %}
-            </table>
-        </div>
+        </table>
+    </div>
     </main>
     </div>
     <footer class="footer">

@@ -75,6 +75,7 @@ def food_register(request):
   
 @login_required
 def food_change_select(request):
+    header = ['食材名','数量','賞味・消費期限']
     foods = Refrigerator.objects.filter(user=request.user).order_by('foodset').reverse()
     #POST送信時の処理
     if (request.method == 'POST'):
@@ -91,6 +92,9 @@ def food_change_select(request):
     else:
         #フォームの用意
         selectform = SelectForm(request.user,foods=foods)
+        for field in selectform:
+                foodlist = zip(field,foods)
+
     params = {
         'title' : '食材変更',
         'text' : '変更ページ',
@@ -107,6 +111,8 @@ def food_change_select(request):
         'goto_delete' : 'food_delete',
         'goto_delete_text' : '削除',
         'select_form' : selectform,
+        'header' : header,
+        'foodlist' : foodlist,
     }
     
     return render(request, 'refrigerator/food_change_select.html',params)
@@ -243,7 +249,8 @@ def food_delete(request):
     else:
         #フォームの用意
         foodsform = FoodsForm(request.user,foods=foods)
-
+        for field in foodsform:
+                foodlist = zip(field,foods)
     params = {
         'title' : '削除',
         'text' : '削除ページ',
@@ -264,7 +271,8 @@ def food_delete(request):
         #checkbox
         'foods_form' : foodsform,
         'foods' : foods,
-        'header': header    
+        'header': header,
+        'foodlist' : foodlist,    
     }
     
     return render(request, 'refrigerator/food_delete.html',params)

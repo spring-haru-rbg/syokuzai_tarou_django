@@ -32,7 +32,7 @@ class FoodSet(models.Model):
     volume = models.CharField(default='個',max_length=10)#数量の単位
     def __str__(self):
         return str(self.food) 
-    
+        
     def str_limitRegister(self):
         return str(self.limitRegister)
 
