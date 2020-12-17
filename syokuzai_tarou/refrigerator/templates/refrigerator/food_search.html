@@ -46,11 +46,15 @@
     <div class="wrapper">
        <main class="main">
         <a>食材検索ページ</a>
+        
             <form action="{% url 'food_search' %}" method="post">
                 {% csrf_token %}
                     <h3 align="left">{{msg}}</h3>
+                    <div class="search-form">
                     <p align="left">{{form.search}}<th><input class="decorated-btn" type="submit" value="検索"></th></p>   
-            </form>   
+                </div>  
+            </form> 
+      
             <div class="scroll-table">
                 <table class="osare-table col5t">    
             <tr>

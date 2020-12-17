@@ -268,3 +268,14 @@ tfoot td {
 ul {
     list-style-type: none;
 }
+
+/*　フォームの見た目　*/
+.form{
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+}
+.search-form{
+    width: 30%;
+}

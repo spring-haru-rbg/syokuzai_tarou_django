@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 
 from django.views.generic.edit import CreateView
 from .models import CustomUser
-from .forms import RegisterForm
+from .forms import *
 
 # signup
 from django.contrib.auth import login
@@ -15,6 +15,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 
 from django.views import generic
+from django.contrib.auth.views import (
+    LoginView, LogoutView
+)
 
 # Create your views here.
 def index(request):
@@ -48,15 +51,21 @@ class SignUp(CreateView):
         return HttpResponseRedirect(self.get_success_url()) # リダイレクト
 
 class PasswordChange(LoginRequiredMixin, PasswordChangeView):
+    form_class = MyPasswordChangeForm
     success_url = reverse_lazy('password_change_done')
     template_name = "accounts/password_change.html" 
     
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs) #継承元のメソッドcall
-        context["form_name"] = "password_change"
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs) #継承元のメソッドcall
+    #     context["form_name"] = "password_change"
+    #     return context
 
 class PasswordChangeDone(LoginRequiredMixin, PasswordChangeDoneView):
     template_name = 'accounts/password_change_done.html'
+
+class Login(LoginView):
+    """ログインページ"""
+    form_class = LoginForm
+    template_name = 'registration/login.html'
    
     
