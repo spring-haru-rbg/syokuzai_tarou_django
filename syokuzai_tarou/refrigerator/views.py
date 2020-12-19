@@ -299,6 +299,7 @@ def calender(request):
 
         foodset_field = FoodSet.objects.create(food=food, limitRegister=request.POST.get('limitRegister'), foodGram=request.POST.get('foodGram'), volume=request.POST.get('volume'))
         foodset_field.save()
+        #保存
         refrigerator = Refrigerator.objects.create(user=request.user,foodset=foodset_field)
         refrigerator.save()
     return render(request, 'refrigerator/calender.html',params)
