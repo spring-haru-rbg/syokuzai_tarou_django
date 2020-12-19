@@ -281,36 +281,24 @@ def food_delete(request):
 
 
 def calender(request):
-    sample
     params = {
         'form_food' : FoodForm(),
         'form_foodset' : FoodSetRegisterForm(),
-        'text': request.POST.get('foodName'),
-        'text1':Food.objects.all().filter(foodName=request.POST.get('foodName')),
-        #textId':Food.objects.all().filter(foodName=request.POST.get('foodName'))
-        'text2':sample
     }
     if request.method == 'POST':
-        obj1 = FoodSet()
+        obj = FoodSet()
         obj2 = Food()
-        foodset = FoodSetRegisterForm(request.POST, instance=obj1)
-        food = FoodForm(request.POST, instance=obj2)
+        foodset_form = FoodSetRegisterForm(request.POST, instance=obj)
+        food_form = FoodForm(request.POST, instance=obj2)
+        if food_form.is_valid():
+            food_form.save()
 
-        if food.is_valid(): #エラー処理
-            food.save()
-            #x=food.id
-        if foodset.is_valid():
-            foodset.food=request.POST.get('foodName')
+        foodID_list = Food.objects.filter(foodName=request.POST.get('foodName')).values_list('id', flat=True)
+        food_id = foodID_list[0]
+        food = Food.objects.get(id=food_id)
 
-            #x=Food.objects.filter(foodName=request.POST.get('foodName'))
-            #idid=x..values_Food("id", flat=True)
-
-            x = Food.objects.all().filter(foodName=request.POST.get('foodName'))
-            sample=x.values(id)
-
-            #foodset_data = foodset.save()   
-            #refrigerator = Refrigerator.objects.create(user=request.user,foodset=foodset_data)
-            #refrigerator.save()
-        #return redirect(to='/refrigerator/calender')
-
+        foodset_field = FoodSet.objects.create(food=food, limitRegister=request.POST.get('limitRegister'), foodGram=request.POST.get('foodGram'), volume=request.POST.get('volume'))
+        foodset_field.save()
+        refrigerator = Refrigerator.objects.create(user=request.user,foodset=foodset_field)
+        refrigerator.save()
     return render(request, 'refrigerator/calender.html',params)
