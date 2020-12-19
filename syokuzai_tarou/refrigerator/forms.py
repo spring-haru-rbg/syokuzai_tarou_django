@@ -42,7 +42,8 @@ class FoodSetRegisterForm(forms.ModelForm):
     class Meta:
         model = FoodSet
         
-        fields = ['food','limitRegister','foodGram','volume']
+        fields = ['limitRegister','foodGram','volume']
+        #fields = ['food','limitRegister','foodGram','volume']
         widgets = {
             'limitRegister': datetimepicker.DatePickerInput(
                 format='%Y-%m-%d',
@@ -51,6 +52,7 @@ class FoodSetRegisterForm(forms.ModelForm):
                     'dayViewHeaderFormat': 'YYYY年 MMMM',
                 }
             ),
+            #'food':forms.HiddenInput(),
         }
     # 数量が０以上かどうかチェックする
     def check_gram(self):
