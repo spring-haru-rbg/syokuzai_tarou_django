@@ -56,6 +56,7 @@
         <table align="center">
             <form action="{% url 'food_register' %}" method="post">
                 {% csrf_token %}        
+                <p align="center">{{ form_food.as_table }}</p>     
                 <p align="center">{{ form_foodset.as_table }}</p>
                 <tr>
                     <td></td>
