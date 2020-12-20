@@ -44,7 +44,6 @@
 <div class="wrapper">
    <main class="main">
     <a>食材登録変更ページ</a></br>
-    
     <h2>食品名　：{{ foodset.food }} ({{ foodset.str_limitRegister }})</h2>
     <form action="{% url 'food_change'  id  %}" method="post">
         {% csrf_token %}
