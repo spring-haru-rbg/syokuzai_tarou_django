@@ -8,6 +8,7 @@ from .models import *
 from django.shortcuts import redirect
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 # Create your views here.
 
@@ -58,6 +59,7 @@ def food_register(request):
         'messgage' : '',
         'form_food' : FoodForm(),
         'form_foodset' : FoodSetRegisterForm(),
+        
     }
     if request.method == 'POST':
         obj = FoodSet()
@@ -76,6 +78,8 @@ def food_register(request):
         foodset_field.save()
         refrigerator = Refrigerator.objects.create(user=request.user,foodset=foodset_field)
         refrigerator.save()
+        # 登録完了メッセージ
+        messages.success(request, '食材登録しました。')
     return render(request, 'refrigerator/food_register.html',params)
 
 @login_required

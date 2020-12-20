@@ -20,17 +20,39 @@
 
     <div class="wrapper">
         <main class="main">
-            <h1>LOGIN</h1>
-            <div class="form">
+            <h1>ログイン</h1>
             <form method="post">
                 {% csrf_token %}
+                <!--
                 <p>ユーザー名</p>
                 <p>{{ form.username }}</p>
                 <p>パスワード</p>
                 <p>{{ form.password }}</p>
                 <button class="decorated-btn" type="submit">ログイン</button>
+            -->
+                <div class="divTable">
+                    <div class="divTableBody">
+                        <div class="divTableRow">
+                            <div class="divTableCell"><h4><p align="center">{{ form.username.label }} :</p></h4></div>
+                            <div class="divTableCell"><h4>{{ form.username }}</h4></div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><h4><p align="center">{{ form.password.label }} :</p></h4></div>
+                            <div class="divTableCell"><h4>{{ form.password }}</h4></div>
+                        </div>
+                        
+                        <div class="divTableRow">
+                            <div class="divTableCell"></div>
+                            <div class="divTableCell"><p align="right"><button class="decorated-btn" type="submit">ログイン</button></p></div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"></div>
+                            <div class="divTableCell"><p align="right"><button class="decorated-btn"><a href="{% url 'signup' %}">新規作成</a></button></p></div>
+                        </div>
+                    </div>
+                </div>
             </form>
-            <button class="decorated-btn"><a href="{% url 'signup' %}">新規作成</a></button>
+            
         </div>
         </main>
     </div>

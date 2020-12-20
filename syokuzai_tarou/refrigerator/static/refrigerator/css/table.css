@@ -271,11 +271,56 @@ ul {
 
 /*　フォームの見た目　*/
 .form{
-    display: block;
+    display: table;
     margin: 0 auto;
-    width: 50%;
+    width: 80%;
     text-align: center;
+}
+.form.tr {
+    display: table-row;
+}
+.form.td {
+    display: table-cell;
+    /*height: 10px;*/
+   /* vertical-align: top;*/
+    padding: 15px;
+   /* text-align: center;*/
 }
 .search-form{
     width: 30%;
+}
+
+/* DivTable */
+.divTable{
+    display: table;
+    margin: 0 auto;
+    width: 80%;
+    
+}
+.divTableRow {
+    display: table-row;
+    text-align: left;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+}
+.divTableCell, .divTableHead {
+	display: table-cell;
+    padding: 5px 5px;
+    width: 100px;
+    
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+	font-weight: bold;
+}
+.divTableFoot {
+	background-color: #EEE;
+	display: table-footer-group;
+	font-weight: bold;
+}
+.divTableBody {
+	display: table-row-group;
 }

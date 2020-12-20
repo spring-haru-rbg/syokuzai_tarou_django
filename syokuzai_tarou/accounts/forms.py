@@ -28,9 +28,9 @@ class RegisterForm(UserCreationForm):
   class Meta:
     model = CustomUser
  
-    fields = (
-      "username", "password1", "password2", 
-    )
+    fields = ['username', 'password1', 'password2',]
+
+    labels = {'username':'ユーザー名','password1':'パスワード','password2':'パスワード（もう一度入力してください）'}
     
  
   def __init__(self, *args, **kwargs):
@@ -51,7 +51,7 @@ class MyPasswordChangeForm(PasswordChangeForm):
   def __init__(self, *args, **kwargs):
     super().__init__(*args, **kwargs)
     self.fields['old_password'].widget.attrs['class'] = 'form-control'
-    self.fields['old_password'].widget.attrs['placeholder'] = '古いパスワード'
+    self.fields['old_password'].widget.attrs['placeholder'] = '元のパスワード'
     self.fields['new_password1'].widget.attrs['class'] = 'form-control'
     self.fields['new_password1'].widget.attrs['placeholder'] = '新しいパスワード'
     self.fields['new_password2'].widget.attrs['class'] = 'form-control'
