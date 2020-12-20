@@ -49,10 +49,15 @@
         
             <form action="{% url 'food_search' %}" method="post">
                 {% csrf_token %}
-                    <h3 align="left">{{msg}}</h3>
-                    <div class="search-form">
-                    <p align="left">{{form.search}}<th><input class="decorated-btn" type="submit" value="検索"></th></p>   
-                </div>  
+                <h3><p align="left">{{msg}}</p></h3>
+                <div class="serach-formTable">
+                    <div class="serach-formTableBody">
+                        <div class="serach-formTableRow">
+                            <div class="serach-formTableCell"><p align="left">{{form.search}}</p></div>
+                            <div class="serach-formTableCell"><p align="left"><input class="decorated-btn" type="submit" value="検索"></h3></p></div>
+                        </div>
+                    </div>
+                </div>
             </form> 
       
             <div class="scroll-table">
