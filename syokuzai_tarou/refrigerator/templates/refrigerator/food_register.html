@@ -53,17 +53,44 @@
     <div class="wrapper">
     <main class="main">
         <h2>食材登録ページ</h2>
-        <table align="center">
+        {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}">
+                        {% endif %}
+                        {{ message }}
+                    </li>
+                    {% endfor %}
+
+            
             <form action="{% url 'food_register' %}" method="post">
-                {% csrf_token %}        
-                <p align="center">{{ form_food.as_table }}</p>     
-                <p align="center">{{ form_foodset.as_table }}</p>
-                <tr>
-                    <td></td>
-                    <td align="center"><input class="decorated-btn" type="submit" value="登録"></td>
-                </tr>
+                {% csrf_token %}
+
+                <div class="divTable">
+                    <div class="divTableBody">
+                        <div class="divTableRow">
+                            <div class="divTableCell"><h3>{{ form_food.foodName.label }} :</h2></div>
+                            <div class="divTableCell"><h3>{{ form_food.foodName }}</h3></div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><h3>{{ form_foodset.foodGram.label }} :</h3></div>
+                            <div class="divTableCell"><h3>{{ form_foodset.foodGram }}</h3></div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><h3>{{ form_foodset.volume.label }} :</h3></div>
+                            <div class="divTableCell"><h3>{{ form_foodset.volume }}</h3></div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><h3>{{ form_foodset.limitRegister.label }} :</h3></div>
+                            <div class="divTableCell"><h3>{{ form_foodset.limitRegister }}</h3></div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"></div>
+                            <div class="divTableCell"><p align="right"><input class="decorated-btn" type="submit" value="登録"></p></div>
+                        </div>
+                    </div>
+                </div>
             </form>
-        </table>
+        
+
     </main>
     </div>
 
