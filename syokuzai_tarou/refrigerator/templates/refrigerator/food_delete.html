@@ -51,6 +51,12 @@
 <div class="wrapper">
    <main class="main">
     <a>食材削除ページ</a>
+    {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}">
+                        {% endif %}
+                        {{ message }}
+                    </li>
+                    {% endfor %}
     <form action="{% url 'food_delete'  %}" method="post">
         {% csrf_token %}
         <div class="scroll-table">
