@@ -27,10 +27,8 @@ class RegisterForm(UserCreationForm):
  
   class Meta:
     model = CustomUser
- 
-    fields = ['username', 'password1', 'password2',]
-
-    labels = {'username':'ユーザー名','password1':'パスワード','password2':'パスワード（もう一度入力してください）'}
+    fields = ['username', 'password1', 'password2']
+    # labels = {'username':'ユーザー名','password1':'パスワード','password2':'パスワード（もう一度入力してください）'}
     
  
   def __init__(self, *args, **kwargs):

@@ -299,7 +299,7 @@ ul {
 }
 .divTableRow {
     display: table-row;
-    text-align: left;
+  /*  text-align: left;*/
 }
 .divTableHeading {
 	background-color: #EEE;
@@ -309,7 +309,7 @@ ul {
 	display: table-cell;
     padding: 5px 5px;
     width: 100px;
-    
+    text-align: center;
 }
 .divTableHeading {
 	background-color: #EEE;
@@ -323,4 +323,25 @@ ul {
 }
 .divTableBody {
 	display: table-row-group;
+}
+
+.serach-formTable{
+    display: table;
+    /*margin: 0 auto;*/
+    width: 80%;
+   /* margin-right: auto;*/
+}
+.serach-formTableRow {
+    display: table-row;
+  /*  text-align: left;*/
+}
+.serach-formTableCell {
+    display: table-cell;
+    padding: 5px 5px;
+    width: 100px;
+    text-align: left;
+}
+.serach-formTableBody {
+    display: table-row-group;
+   /* margin-right: auto;*/
 }
