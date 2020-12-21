@@ -15,6 +15,9 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 <script type="text/javascript" src="/static/bootstrap_datepicker_plus/js/datepicker-widget.js"></script> 
 <link rel="stylesheet" href="{% static 'refrigerator/css/hamburger.css' %}" />
+<!--intro.jsの読み込み-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.1.0/intro.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.1.0/introjs.min.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -41,16 +44,22 @@
     <div class="wrapper">
     <main class="main">
         <h2>食材登録ページ</h2>
-        <table align="center">
+        <table align="center" data-intro="全ての項目を埋めて" data-step="1">
             <form action="{% url 'calender' %}" method="post">
                 {% csrf_token %} 
                 <p align="center">{{ form_food.as_table }}</p>     
                 <p align="center">{{ form_foodset.as_table }}</p>
                 <tr>
                     <td></td>
-                    <td align="center"><input class="decorated-btn" type="submit" value="登録"></td>
+                    <td align="center"><input class="decorated-btn" type="submit" value="登録" data-intro="登録ボタンを押す" data-step="2"></td>
                 </tr>
             </form>
+            <input class="intro-btn" type="button" value="この機能の使い方" onclick="buttonClick()">
+            <script type="text/javascript">
+                function buttonClick(){
+                    introJs().start();
+                }
+            </script>
         </table>
     </main>
     </div>
