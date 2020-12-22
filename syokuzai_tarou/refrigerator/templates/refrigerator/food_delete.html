@@ -13,6 +13,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <!--intro.jsの読み込み-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.1.0/intro.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.1.0/introjs.min.css" rel="stylesheet" type="text/css">
 
     <title>{{ title }}</title>
 </head>
@@ -59,7 +62,7 @@
                     {% endfor %}
     <form action="{% url 'food_delete'  %}" method="post">
         {% csrf_token %}
-        <div class="scroll-table">
+        <div class="scroll-table" data-intro="削除する食材を選択して" data-step="1">
             <table class="osare-table col5t">  
             <tr>
                 <thead>
@@ -78,11 +81,17 @@
                         {% endfor %}
         </table>
         </div>
+        <input class="intro-btn" type="button" value="この機能の使い方" onclick="buttonClick()">
+        <script type="text/javascript">
+            function buttonClick(){
+                introJs().start();
+            }
+        </script>
         <!--
         <input class="decorated-btn" type="submit" value="食材削除">
         -->
         <!-- モーダルを開くボタン・リンク -->
-        <button type="button" class="decorated-btn" data-toggle="modal" data-target="#testModal">食材削除</button>
+        <button type="button" class="decorated-btn" data-toggle="modal" data-target="#testModal" data-intro="削除ボタンを押そう!!<br>確認画面が出たら「削除」を押して削除完了" data-step="2">食材削除</button>
         
         <!-- ボタン・リンククリック後に表示される画面の内容 -->
         <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
