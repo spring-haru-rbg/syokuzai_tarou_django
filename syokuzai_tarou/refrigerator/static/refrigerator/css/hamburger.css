@@ -1,4 +1,4 @@
-@font-face {
+/*@font-face {
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 300;
@@ -10,6 +10,10 @@
     font-weight: 400;
     src: url(https://fonts.gstatic.com/s/pacifico/v17/FwZY7-Qmy14u9lezJ-6H6Mw.ttf) format('truetype');
   }
+  */
+  /*Kosugi Maruフォント*/
+  @import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap');
+
   .flex-center {
     display: -webkit-box;
     display: flex;
@@ -20,7 +24,7 @@
   }
   * {
     box-sizing: border-box;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Kosugi Maru', sans-serif;
     font-weight: 300;
   }
   a,
