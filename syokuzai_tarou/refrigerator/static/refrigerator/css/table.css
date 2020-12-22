@@ -1,4 +1,7 @@
 @charset "UTF-8";
+/*Kosugi Maruフォントのインポート*/
+@import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap');
+
 html {
     font-size: 62.5%;
 }
@@ -6,7 +9,7 @@ html {
 body {
     color: #333;
     font-size: 1.2rem;
-    font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+    font-family: 'Kosugi Maru', sans-serif;
     background: #e6dfcb url('../images/background.png');
 }
 
