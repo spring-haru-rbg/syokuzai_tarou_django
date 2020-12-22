@@ -47,24 +47,24 @@
         </nav>
     </header>
     <div class="wrapper">
-       <main class="main">
+        <main class="main">
         <a>食材検索ページ</a>
         
-            <form action="{% url 'food_search' %}" method="post">
-                {% csrf_token %}
-                <h3><p align="left">{{msg}}</p></h3>
-                <div class="serach-formTable">
-                    <div class="serach-formTableBody">
-                        <div class="serach-formTableRow">
-                            <div class="serach-formTableCell" data-intro="検索ワードを入力" data-step="1"><p align="left">{{form.search}}</p></div>
-                            <div class="serach-formTableCell"><p align="left"><input class="decorated-btn" type="submit" value="検索" data-intro="検索ボタンを押して" data-step="2"></h3></p></div>
-                        </div>
+        <form action="{% url 'food_search' %}" method="post">
+            {% csrf_token %}
+            <h3><p align="left">{{msg}}</p></h3>
+            <div class="serach-formTable">
+                <div class="serach-formTableBody">
+                    <div class="serach-formTableRow">
+                        <div class="serach-formTableCell" data-intro="検索ワードを入力" data-step="1"><p align="left">{{form.search}}</p></div>
+                        <div class="serach-formTableCell"><p align="left"><input class="decorated-btn" type="submit" value="検索" data-intro="検索ボタンを押して" data-step="2"></h3></p></div>
                     </div>
                 </div>
-            </form> 
-      
-            <div class="scroll-table" data-intro="ここに結果が表示されるよ" data-step="3">
-                <table class="osare-table col5t">    
+            </div>
+        </form> 
+    
+        <div class="scroll-table" data-intro="ここに結果が表示されるよ" data-step="3">
+            <table class="osare-table col5t">    
             <tr>
             <thead>
             {% for h in header %}
@@ -80,15 +80,15 @@
                     <td>{{ item.foodset.str_limitRegister }}</td>   
                 </tr>
             {% endfor %}
-        </table>
-    </div>
-    <input class="intro-btn" type="button" value="この機能の使い方" onclick="buttonClick()">
-    <script type="text/javascript">
-        function buttonClick(){
-            introJs().start();
-        }
-    </script>
-    </main>
+            </table>
+        </div>
+        <input class="intro-btn" type="button" value="この機能の使い方" onclick="buttonClick()">
+        <script type="text/javascript">
+            function buttonClick(){
+                introJs().start();
+            }
+        </script>
+        </main>
     </div>
     <footer class="footer">
          <p class="copyright">Copyright @ 2020 syokuzai_tarou</p>

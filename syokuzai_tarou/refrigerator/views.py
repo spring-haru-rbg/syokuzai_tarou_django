@@ -172,10 +172,10 @@ def food_search(request):
         form = SearchForm(request.POST)
         msg = '食品名を入れてください'
         search_name = request.POST['search']
-        foods = Refrigerator.objects.filter(user=request.user).filter(foodset__food__foodName__icontains = search_name)
+        foods = Refrigerator.objects.filter(user=request.user).filter(foodset__food__foodName__icontains = search_name).order_by('foodset').reverse()
     else:
         form = SearchForm()
-        foods = Refrigerator.objects.filter(user=request.user)
+        foods = Refrigerator.objects.filter(user=request.user).order_by('foodset').reverse()
         msg = '食品名を入れてください'
     params = {
         'title' : '食材検索',
