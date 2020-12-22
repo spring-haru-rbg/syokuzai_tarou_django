@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="{% static 'refrigerator/css/hamburger.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/deco_btn.css' %}" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <!--intro.jsの読み込み-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.1.0/intro.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.1.0/introjs.min.css" rel="stylesheet" type="text/css">
     <title>{{title}}</title>
 </head>
 
@@ -57,7 +60,7 @@
                     {% endfor %}
             <form action="{% url 'food_change_select'   %}" method="post">
                 {% csrf_token %}
-                <div class="scroll-table">
+                <div class="scroll-table" data-intro="数量変更したい食材を選択して" data-step="1">
                     <table class="osare-table col5t">  
                     <tr>
                         <thead>
@@ -77,8 +80,26 @@
                     <input type="hidden"  value="__select_form__">
                 </table>
             </div>
-                <input class="decorated-btn" type="submit" value="食材変更">
+                <input class="decorated-btn" type="submit" value="食材変更" data-intro="ボタンを押そう" data-step="2">
             </form>
+            <input class="intro-btn" type="button" value="この機能の使い方" onclick="buttonClick()">
+            
+            <script type="text/javascript">
+                function buttonClick(){
+                    introJs().start();
+                }
+            </script>
+            
+            <!--ページ遷移
+            <script type="text/javascript">
+                function buttonClick(){
+                    introJs().start();
+                    introJs().start().oncomplete(function() {
+                            window.location.href = 'food_register';
+                        });
+                    }
+            </script>
+            -->
     </main>
     </div>
     <footer class="footer">

@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="{% static 'refrigerator/css/hamburger.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/deco_btn.css' %}" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <!--intro.jsの読み込み-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.1.0/intro.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.1.0/introjs.min.css" rel="stylesheet" type="text/css">
     <title>{{title}}</title>
 </head>
 <body>
@@ -48,10 +51,16 @@
     <form action="{% url 'food_change'  id  %}" method="post">
         {% csrf_token %}
         <tr>
-            <h2>数量　：{{foodset.foodGram}}ーー＞{{ form }}{{foodset.volume}}</h2></br>
+            <h2 data-intro="変更後の値を入力" data-step="1">数量　：{{foodset.foodGram}}ーー＞{{ form }}{{foodset.volume}}</h2></br>
         </tr>
-        <input class="decorated-btn" type="submit" value="食材変更">
+        <input class="decorated-btn" type="submit" value="食材変更" data-intro="このボタンを押して変更完了" data-step="2">
     </form>
+    <input class="intro-btn" type="button" value="この機能の使い方" onclick="buttonClick()">
+            <script type="text/javascript">
+                function buttonClick(){
+                    introJs().start();
+                }
+            </script>
    </main>
 </div>
 <footer class="footer">

@@ -24,7 +24,7 @@
 
 .intro-btn{
     position: absolute;
-    top: 130px; right: 20px;
+    bottom: 20px; right: 20px;
     /*top: 10; right: 0; bottom: 10; left: 20;*/
     margin-top: 15px;
     width: 120px;

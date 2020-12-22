@@ -15,6 +15,9 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 <script type="text/javascript" src="/static/bootstrap_datepicker_plus/js/datepicker-widget.js"></script> 
 <link rel="stylesheet" href="{% static 'refrigerator/css/hamburger.css' %}" />
+<!--intro.jsの読み込み-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.1.0/intro.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.1.0/introjs.min.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -65,7 +68,7 @@
                 {% csrf_token %}
 
                 <div class="divTable">
-                    <div class="divTableBody">
+                    <div class="divTableBody" data-intro="内容を埋めて" data-step="1">
                         <div class="divTableRow">
                             <div class="divTableCell"><h3>{{ form_food.foodName.label }} :</h2></div>
                             <div class="divTableCell"><h3>{{ form_food.foodName }}</h3></div>
@@ -84,13 +87,17 @@
                         </div>
                         <div class="divTableRow">
                             <div class="divTableCell"></div>
-                            <div class="divTableCell"><p align="right"><input class="decorated-btn" type="submit" value="登録"></p></div>
+                            <div class="divTableCell"><p align="right"><input class="decorated-btn" type="submit" value="登録" data-intro="登録ボタンを押す" data-step="2"></p></div>
                         </div>
                     </div>
                 </div>
             </form>
-        
-
+            <input class="intro-btn" type="button" value="この機能の使い方" onclick="buttonClick()">
+            <script type="text/javascript">
+                function buttonClick(){
+                    introJs().start();
+                }
+            </script>
     </main>
     </div>
 
