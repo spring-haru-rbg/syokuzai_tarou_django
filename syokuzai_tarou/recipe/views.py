@@ -8,8 +8,11 @@ import requests
 import urllib.parse
 from django.shortcuts import redirect
 from urllib.parse import quote
+from urllib.parse import unquote
 from urllib.parse import urlencode
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 # Create your views here.
 
@@ -21,18 +24,28 @@ def recipe_select(request):
     if (request.method == 'POST'):
      #Foodsのチェック更新時の処理
         checks_value = request.POST.getlist('foods')
+        recipe = []
         for item in checks_value:
             recipe_data = Refrigerator.objects.get(id=item)
+            recipe.append(recipe_data.foodset.food.foodName)
+        #parameters = zipped(recipe_id,recipe_name)
         #parameters = urlencode({'param1': 'recipe_data', 'param2': 123})
          # URLにパラメータを付与する
-        #redirect_url = reverse('app:sample')
-        #url = f'{redirect_url}?{parameters}'
-        #return redirect(url)
+        recipe = {'param1':recipe[0],'param2':recipe[1]}
+        recipe = urllib.parse.urlencode(recipe)
+        redirect_url = reverse('sample')
+        url = f'{redirect_url}?{recipe}'
+        return redirect(url)
         #return redirect(to='/recipe')
-        response = redirect('post_list')
-        param1 = request.GET.urlencode()
-        response['recipe'] += '?'+param1
-        return response
+        #response = redirect('sample')
+        #param1 = request.GET.urlencode()
+        #response['location'] += '?'+param1
+        #return response
+        #recipe = {'param1':recipe[0],'param2':recipe[1]}
+        #recipe = urllib.parse.urlencode(recipe)
+        #redirect = HttpResponseRedirect(reverse('sample'))
+        #redirect['Location'] += '&'.join(['recipe={}'.format(x) for x in recipe])
+        #return redirect
             
     #GETアクセス時の処理
     else:
@@ -114,9 +127,14 @@ def recipe(request):
 
 @login_required
 def sample(request):
-    param1 = request.GET['param1']
+    param1 = request.GET.get('param1')
+    param2 = request.GET.get('param2')
+    #param1 = param1.unquote(param1)
+    #if param1:
+        #param1 = [str(x) for x in param1]
     params = {
         'text' : param1,
+        'text2' : param2,
     }
     return render(request, 'recipe/sample.html',params)
     #msg = request.GET['msg']
