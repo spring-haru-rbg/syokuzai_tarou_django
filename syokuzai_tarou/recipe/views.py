@@ -88,8 +88,8 @@ def recipe(request):
     param1 = param1.replace(']','')
     param1 = param1.replace(',','')
     param1 = param1.replace('\'','')
-    param1 = urllib.parse.quote(param1)
-    url = 'https://erecipe.woman.excite.co.jp/search/'+param1
+    param = urllib.parse.quote(param1)
+    url = 'https://erecipe.woman.excite.co.jp/search/'+param
     #url = url.replace('%27','%20')
     #スクレイピング
     response = urllib.request.urlopen(url)
@@ -128,7 +128,7 @@ def recipe(request):
         'links' : links,
         'name' : recipe_names,
         'link_list' : link_list,
-        #'param1' : param1,
+        'param1' : param1,
         #'text' : url,
     }
     return render(request, 'recipe/recipe.html',params)
