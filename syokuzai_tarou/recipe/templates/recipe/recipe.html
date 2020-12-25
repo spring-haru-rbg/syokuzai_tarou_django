@@ -43,11 +43,12 @@
     <div class="wrapper">
        <main class="main">
         <a>レシピ表示ページ</a>
-        <p>{{param1}}</p>
-        <!--{% for names,links in link_list%}-->
+        <!--<p>param1の中身:{{param1}}</p>-->
+        <!--<p>URL:{{text}}</p>-->
+        {% for names,links in link_list%}
            <!--<p>{{names}}{{links}}</p>-->
-           <!--<p>{{names}}:<a href="{{links}}">{{links}}</a></p>
-        {% endfor %}-->
+           <p>{{names}}:<a href="{{links}}">{{links}}</a></p>
+        {% endfor %}
         
 
     </main>
