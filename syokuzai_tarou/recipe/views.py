@@ -2,6 +2,18 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .forms import *
 from refrigerator.models import *
+from bs4 import BeautifulSoup    # importする
+import urllib.request
+import requests
+import urllib.parse
+from django.shortcuts import redirect
+from urllib.parse import quote
+from urllib.parse import unquote
+from urllib.parse import urlencode
+from django.http import HttpResponse
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+import re
 
 # Create your views here.
 
@@ -13,9 +25,28 @@ def recipe_select(request):
     if (request.method == 'POST'):
      #Foodsのチェック更新時の処理
         checks_value = request.POST.getlist('foods')
+        recipe = []
         for item in checks_value:
-            recipe_data = Refrigerator.objects.get(id=item) 
-        return redirect(to='/recipe')
+            recipe_data = Refrigerator.objects.get(id=item)
+            recipe.append(recipe_data.foodset.food.foodName)
+        #parameters = zipped(recipe_id,recipe_name)
+        #parameters = urlencode({'param1': 'recipe_data', 'param2': 123})
+         # URLにパラメータを付与する
+        recipe = {'param1':recipe}
+        recipe = urllib.parse.urlencode(recipe)
+        redirect_url = reverse('recipe')
+        url = f'{redirect_url}?{recipe}'
+        return redirect(url)
+        #return redirect(to='/recipe')
+        #response = redirect('sample')
+        #param1 = request.GET.urlencode()
+        #response['location'] += '?'+param1
+        #return response
+        #recipe = {'param1':recipe[0],'param2':recipe[1]}
+        #recipe = urllib.parse.urlencode(recipe)
+        #redirect = HttpResponseRedirect(reverse('sample'))
+        #redirect['Location'] += '&'.join(['recipe={}'.format(x) for x in recipe])
+        #return redirect
             
     #GETアクセス時の処理
     else:
@@ -50,6 +81,31 @@ def recipe_select(request):
 
 @login_required
 def recipe(request):
+    #get_params = request.GET.urlencode()
+    param1 = request.GET.get('param1') # param1の値を取得
+    #param1 = param1.replace('')
+    param1 = param1.replace('[','')
+    param1 = param1.replace(']','')
+    param1 = param1.replace(',','')
+    param1 = param1.replace('\'','')
+    param = urllib.parse.quote(param1)
+    url = 'https://erecipe.woman.excite.co.jp/search/'+param
+    #url = url.replace('%27','%20')
+    #スクレイピング
+    response = urllib.request.urlopen(url)
+    html = response.read()
+    soup = BeautifulSoup(html)
+    # 全てのaタグを抽出
+    recipe = soup.find_all('a' ,class_='recipename')
+    
+    links=[]
+    recipe_names=[]
+    for link in recipe:
+        url_link = 'https://erecipe.woman.excite.co.jp' + link.get('href')
+        links.append(url_link)
+        recipe_names.append(link.get_text())
+    link_list = zip(recipe_names,links)
+
     params = {
         'title' : 'レシピ検索結果表示',
         'text' : 'レシピ検索結果表示ページ',
@@ -69,5 +125,36 @@ def recipe(request):
         'goto_recipe_text' : 'レシピ検索',
         'goto_recipe_reselect' : 'recipe_select',
         'goto_recipe_reselect_text' : 'レシピ検索し直す',
+        'links' : links,
+        'name' : recipe_names,
+        'link_list' : link_list,
+        'param1' : param1,
+        #'text' : url,
     }
     return render(request, 'recipe/recipe.html',params)
+
+@login_required
+def sample(request):
+    param1 = request.GET.get('param1')
+    #param2 = request.GET.get('param2')
+    #param1 = param1.unquote(param1)
+    #if param1:
+        #param1 = [str(x) for x in param1]
+    params = {
+        'text' : param1,
+        #'text2' : param2,
+    }
+    return render(request, 'recipe/sample.html',params)
+    #msg = request.GET['msg']
+    #return HttpResponse('you typed : "'+ msg + '".')
+
+@login_required
+#redirect先のurl決定(recipe_select)
+def sample2(request):
+    if (request.method == 'POST'):
+        msg = urllib.parse.quote('じゃがいも たまご')
+        url = '/sample/?param1='+ msg
+        return redirect(url)
+        #return redirect(to='/recipe')
+     
+    return render(request, 'recipe/sample2.html')
