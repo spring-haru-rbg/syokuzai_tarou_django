@@ -48,10 +48,6 @@
     <div class="wrapper">
        <main class="main">
         <a>食材登録変更を選択するページ</a>
-            <tr>
-                <th></th>
-                <th>食材名</th>
-            </tr>
             {% for message in messages %}
                     <li {% if message.tags %} class="{{ message.tags }}">
                         {% endif %}
