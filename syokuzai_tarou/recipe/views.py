@@ -83,28 +83,53 @@ def recipe_select(request):
 def recipe(request):
     #get_params = request.GET.urlencode()
     param1 = request.GET.get('param1') # param1の値を取得
-    #param1 = param1.replace('')
-    param1 = param1.replace('[','')
-    param1 = param1.replace(']','')
-    param1 = param1.replace(',','')
-    param1 = param1.replace('\'','')
-    param = urllib.parse.quote(param1)
-    url = 'https://erecipe.woman.excite.co.jp/search/'+param
-    #url = url.replace('%27','%20')
-    #スクレイピング
-    response = urllib.request.urlopen(url)
-    html = response.read()
-    soup = BeautifulSoup(html)
-    # 全てのaタグを抽出
-    recipe = soup.find_all('a' ,class_='recipename')
+    if (request.method == 'POST'):
+        return redirect(to='/recipe/recipe_select')
+    else:
+        #param1 = param1.replace('')
+        param1 = param1.replace('[','')
+        param1 = param1.replace(']','')
+        param1 = param1.replace(',','')
+        param1 = param1.replace('\'','')
+        param = urllib.parse.quote(param1)
+        url = 'https://erecipe.woman.excite.co.jp/search/'+param
+        #url = url.replace('%27','%20')
+        #スクレイピング
+        response = urllib.request.urlopen(url)
+        html = response.read()
+        soup = BeautifulSoup(html)
+
+        #image_html = requests.get(url).text
+        #image_soup =  BeautifulSoup(image_html)
+        # 全てのaタグを抽出
+        recipe = soup.find_all('a' ,class_='recipename')
     
-    links=[]
-    recipe_names=[]
-    for link in recipe:
-        url_link = 'https://erecipe.woman.excite.co.jp' + link.get('href')
-        links.append(url_link)
-        recipe_names.append(link.get_text())
-    link_list = zip(recipe_names,links)
+        links=[]
+        recipe_names=[]
+        for link in recipe:
+            url_link = 'https://erecipe.woman.excite.co.jp' + link.get('href')
+            links.append(url_link)
+            recipe_names.append(link.get_text())
+        #link_list = zip(recipe_names,links)
+
+        #全てのdiv class＝"inner posrltv"を抽出
+        #for name,item in link_list:
+        recipe_image = []
+        images = soup.find_all('img', class_='thmb fl lazy')
+        for image in images:
+            recipe_image.append(image.get('data-src'))
+        #image = re.match(r'https?://[\w!?/+\-_~=;.,*&@#$%()\'[\]]+jpeg',images)
+
+        #image = image_soup.find('div', id='main').find('img').get('data-src')
+        #for item in image:
+        #   images.append(item)
+        #images = image_soup.find_all('div', id='main')
+        #recipe_image = []
+
+        #recipe_food = []
+        #foods = soup.find_all('strong',class_='tit fl bigger mB10')
+        link_list = zip(recipe_names,links,recipe_image)
+    
 
     params = {
         'title' : 'レシピ検索結果表示',
@@ -129,32 +154,33 @@ def recipe(request):
         'name' : recipe_names,
         'link_list' : link_list,
         'param1' : param1,
+        #'image' : image,
         #'text' : url,
     }
     return render(request, 'recipe/recipe.html',params)
 
-@login_required
-def sample(request):
-    param1 = request.GET.get('param1')
+#@login_required
+#def sample(request):
+    #param1 = request.GET.get('param1')
     #param2 = request.GET.get('param2')
     #param1 = param1.unquote(param1)
     #if param1:
         #param1 = [str(x) for x in param1]
-    params = {
-        'text' : param1,
+    #params = {
+     #   'text' : param1,
         #'text2' : param2,
-    }
-    return render(request, 'recipe/sample.html',params)
+    #}
+    #return render(request, 'recipe/sample.html',params)
     #msg = request.GET['msg']
     #return HttpResponse('you typed : "'+ msg + '".')
 
-@login_required
+#@login_required
 #redirect先のurl決定(recipe_select)
-def sample2(request):
-    if (request.method == 'POST'):
-        msg = urllib.parse.quote('じゃがいも たまご')
-        url = '/sample/?param1='+ msg
-        return redirect(url)
+#def sample2(request):
+ #   if (request.method == 'POST'):
+  #      msg = urllib.parse.quote('じゃがいも たまご')
+   #     url = '/sample/?param1='+ msg
+    #    return redirect(url)
         #return redirect(to='/recipe')
      
-    return render(request, 'recipe/sample2.html')
+    #return render(request, 'recipe/sample2.html')
