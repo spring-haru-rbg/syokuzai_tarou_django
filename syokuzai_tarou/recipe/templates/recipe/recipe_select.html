@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="{% static 'refrigerator/css/hamburger.css' %}" />
     <link rel="stylesheet" href="{% static 'refrigerator/css/deco_btn.css' %}" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <!--intro.jsの読み込み-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.1.0/intro.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.1.0/introjs.min.css" rel="stylesheet" type="text/css">
     <title>{{ title }}</title>
 </head>
 <body>
@@ -42,11 +45,11 @@
         </nav>
     </header>
     <div class="wrapper">
-       <main class="main">
+    <main class="main">
         <a>レシピ表示ページ</a>
         <form  method="post" >
             {%  csrf_token %}
-            <div class="scroll-table">
+            <div data-intro="使いたい食材にチェックを付けて" data-step="1" class="scroll-table">
                 <table class="osare-table col5t">  
                 <tr>
                     <thead>
@@ -65,8 +68,14 @@
             {% endfor %}
             </table>
             </div>
-            <input class="decorated-btn" type="submit" value="レシピ検索">
+            <input class="decorated-btn" type="submit" value="レシピ検索" data-intro="ここを押すとレシピ検索開始" data-step="2">
         </form>
+        <input class="intro-btn" type="button" value="この機能の使い方" onclick="buttonClick()">
+        <script type="text/javascript">
+            function buttonClick(){
+                introJs().start();
+            }
+        </script>
     </main>
     </div>
     <footer class="footer">
