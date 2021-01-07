@@ -3,9 +3,8 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>LOGIN</title>
-    <link rel="stylesheet" href="{% static 'refrigerator/css/reset.css' %}" />
+    <meta charset="utf-8">
+    <title>ログイン</title>
     <link rel="stylesheet" href="{% static 'refrigerator/css/table.css' %}" />
     <link rel="stylesheet" href="{% static 'refrigerator/css/deco_btn.css' %}" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
@@ -23,13 +22,6 @@
             <h1>ログイン</h1>
             <form method="post">
                 {% csrf_token %}
-                <!--
-                <p>ユーザー名</p>
-                <p>{{ form.username }}</p>
-                <p>パスワード</p>
-                <p>{{ form.password }}</p>
-                <button class="decorated-btn" type="submit">ログイン</button>
-            -->
                 <div class="divTable">
                     <div class="divTableBody">
                         <div class="divTableRow">

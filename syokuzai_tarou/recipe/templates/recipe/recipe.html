@@ -51,10 +51,7 @@
             {%  csrf_token %}
             <h3>{{param1}}を使用したレシピ検索結果</h3>
             <div data-intro="検索結果がここに表示されるよ" data-step="1" class="scroll-table">
-                    <!--<p>URL:{{text}}</p>-->
-                <!--<li>-->
                 {% for names,links,image in link_list%}
-                    <!--<p>{{names}}{{links}}</p>-->
                     <div class="recipe" style=height:125px>
                         <div class="recipe" align="left">
                             <image align="left" src={{image}} width=180 height=120></image>
@@ -66,7 +63,6 @@
                     </div>
                    
                 {% endfor %}
-                <!--</li>-->
             </div>
             <input class="decorated-btn" type="submit" value="検索し直す" data-intro="結果が気に入らなかったらここを押して！<br>検索し直そう" data-step="2">
             

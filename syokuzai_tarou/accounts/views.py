@@ -20,21 +20,6 @@ from django.contrib.auth.views import (
 )
 
 # Create your views here.
-def index(request):
-    return render(request, 'accounts/index.html')
-
-
-def home(request):
-    return render(request, 'accounts/home.html')
-
-#class home(LoginRequiredMixin, generic.TemplateView):
-  #  """メニュービュー"""
-   # template_name = 'accounts/home.html'
-#
- #   def get_context_data(self, **kwargs):
-  #      context = super().get_context_data(**kwargs) # 継承元のメソッドCALL
-   #     context["form_name"] = "top"
-    #    return context
 
 class SignUp(CreateView):
     model = CustomUser
@@ -54,11 +39,7 @@ class PasswordChange(LoginRequiredMixin, PasswordChangeView):
     form_class = MyPasswordChangeForm
     success_url = reverse_lazy('password_change_done')
     template_name = "accounts/password_change.html" 
-    
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs) #継承元のメソッドcall
-    #     context["form_name"] = "password_change"
-    #     return context
+
 
 class PasswordChangeDone(LoginRequiredMixin, PasswordChangeDoneView):
     template_name = 'accounts/password_change_done.html'
