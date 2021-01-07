@@ -15,9 +15,6 @@ class LoginForm(AuthenticationForm):
     self.fields['username'].widget.attrs['placeholder'] = 'お名前'
     self.fields['password'].widget.attrs['class'] = 'form-control'
     self.fields['password'].widget.attrs['placeholder'] = 'パスワード'
-    # for field in self.fields.values():
-    #   field.widget.attrs['class'] = 'form-control'    
-    #   field.widget.attrs['placeholder'] = field.label 
 
 # 新規作成フォーム
 class RegisterForm(UserCreationForm):
@@ -27,9 +24,7 @@ class RegisterForm(UserCreationForm):
  
   class Meta:
     model = CustomUser
-    fields = ['username', 'password1', 'password2']
-    # labels = {'username':'ユーザー名','password1':'パスワード','password2':'パスワード（もう一度入力してください）'}
-    
+    fields = ['username', 'password1', 'password2']   
  
   def __init__(self, *args, **kwargs):
     super().__init__(*args, **kwargs)

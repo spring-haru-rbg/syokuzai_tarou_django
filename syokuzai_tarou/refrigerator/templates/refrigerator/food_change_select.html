@@ -48,6 +48,7 @@
     <div class="wrapper">
        <main class="main">
         <a>食材登録変更を選択するページ</a>
+        <h3><p align="left">数量を変更したい食材を１つ選択してください。</p></h3>
             {% for message in messages %}
                     <li {% if message.tags %} class="{{ message.tags }}">
                         {% endif %}
@@ -85,17 +86,6 @@
                     introJs().start();
                 }
             </script>
-            
-            <!--ページ遷移
-            <script type="text/javascript">
-                function buttonClick(){
-                    introJs().start();
-                    introJs().start().oncomplete(function() {
-                            window.location.href = 'food_register';
-                        });
-                    }
-            </script>
-            -->
     </main>
     </div>
     <footer class="footer">

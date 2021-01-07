@@ -5,7 +5,6 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/table.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'refrigerator/css/scrollbar.css' %}" />
     <link rel="stylesheet" href="{% static 'refrigerator/css/hamburger.css' %}" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <title>{{ title }}</title>
@@ -13,9 +12,6 @@
 
 <body>
     <header class="header">
-        <!-- この書き方でもいける
-        <h1 class="logo"><a href="{% url 'refrigerator' %}"></a></h1>
-        -->
         <h1><a href="{% url 'refrigerator' %}"><p class="logo" alt="食材残さないよ太郎"></a></h1>
         <div class="outer-menu">
             <input class="checkbox-toggle" type="checkbox" />

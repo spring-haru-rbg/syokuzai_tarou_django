@@ -75,23 +75,6 @@ class FoodSetRegisterForm(forms.ModelForm):
         return foodGram
     
 
-# RegisterFormSet = forms.inlineformset_factory(
-#     parent_model=Food,
-#     model=FoodSet,
-#     extra=1,
-#     fields=("limitRegister", "foodGram", "volume", "food"),
-#     #fields='__all__',
-#     form=FoodSetRegisterForm
-# )
- 
-    #def clean(self):
-     #   cleaned_data = super().clean()
-      #  name = cleaned_data.get('name')
-       # nickname = cleaned_data.get('nickname')
-        #if not (name or nickname):
-         #   raise forms.ValidationError("名前かニックネームのどちらかを入力して下さい")
-        #return cleaned_data
-
 # 食材数量変更フォーム
 class FoodGramChangeForm(forms.ModelForm):
     class Meta:

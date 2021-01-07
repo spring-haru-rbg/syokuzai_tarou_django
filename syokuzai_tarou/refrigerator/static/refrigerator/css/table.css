@@ -18,6 +18,11 @@ body {
 * ::after {
     box-sizing: border-box;
 }
+* {
+    box-sizing: border-box;
+    font-family: 'Kosugi Maru', sans-serif;
+    font-weight: 300;
+  }
 
 a:link,
 a:visited,
