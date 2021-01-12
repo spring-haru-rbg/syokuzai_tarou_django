@@ -26,7 +26,8 @@ class FoodSet(models.Model):
         blank=True,
         null=True,
     )
-    foodGram = models.IntegerField(default=0,validators=[check_gram])
+    #foodGram = models.IntegerField(default=0,validators=[check_gram])#元のやつ
+    foodGram = models.PositiveIntegerField(default=0,validators=[check_gram])#正の値か0
     volume = models.CharField(default='個',max_length=10)#数量の単位
     def __str__(self):
         return str(self.food) 
