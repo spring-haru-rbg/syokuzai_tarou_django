@@ -46,14 +46,13 @@
 </header>
 <div class="wrapper">
    <main class="main">
-    <a>食材登録変更ページ</a></br>
     <h2>食品名　：{{ foodset.food }} ({{ foodset.str_limitRegister }})</h2>
     <form action="{% url 'food_change'  id  %}" method="post">
         {% csrf_token %}
         <tr>
             <h2 data-intro="変更後の値を入力" data-step="1">数量　：{{foodset.foodGram}}ーー＞{{ form }}{{foodset.volume}}</h2></br>
         </tr>
-        <input class="decorated-btn" type="submit" value="食材変更" data-intro="このボタンを押して変更完了" data-step="2">
+        <input class="decorated-btn" type="submit" value="変更する" data-intro="このボタンを押して変更完了" data-step="2">
     </form>
     <input class="intro-btn" type="button" value="この機能の使い方" onclick="buttonClick()">
             <script type="text/javascript">

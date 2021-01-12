@@ -47,7 +47,6 @@
     </header>
     <div class="wrapper">
        <main class="main">
-        <a>食材登録変更を選択するページ</a>
         <h3><p align="left">数量を変更したい食材を１つ選択してください。</p></h3>
             {% for message in messages %}
                     <li {% if message.tags %} class="{{ message.tags }}">
@@ -77,7 +76,7 @@
                     <input type="hidden"  value="__select_form__">
                 </table>
             </div>
-                <input class="decorated-btn" type="submit" value="食材変更" data-intro="ボタンを押そう" data-step="2">
+                <input class="decorated-btn" type="submit" value="変更" data-intro="ボタンを押そう" data-step="2">
             </form>
             <input class="intro-btn" type="button" value="この機能の使い方" onclick="buttonClick()">
             

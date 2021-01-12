@@ -53,7 +53,6 @@
 </header>
 <div class="wrapper">
    <main class="main">
-    <a>食材削除ページ</a>
     <h3><p align="left">削除したい食材を複数選択可能です。</p></h3>
     {% for message in messages %}
                     <li {% if message.tags %} class="{{ message.tags }}">
@@ -89,7 +88,7 @@
             }
         </script>
         <!-- モーダルを開くボタン・リンク -->
-        <button type="button" class="decorated-btn" data-toggle="modal" data-target="#testModal" data-intro="削除ボタンを押そう!!<br>確認画面が出たら「削除」を押して削除完了" data-step="2">食材削除</button>
+        <button type="button" class="decorated-btn" data-toggle="modal" data-target="#testModal" data-intro="削除ボタンを押そう!!<br>確認画面が出たら「削除」を押して削除完了" data-step="2">削除</button>
         
         <!-- ボタン・リンククリック後に表示される画面の内容 -->
         <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
@@ -103,7 +102,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
-                        <button type="submit" class="btn btn-danger">削除</button>
+                        <button type="submit" class="btn btn-danger" value="削除">削除</button>
                     </div>
                 </div>
             </div>
