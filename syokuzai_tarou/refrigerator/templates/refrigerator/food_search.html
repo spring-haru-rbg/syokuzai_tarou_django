@@ -47,9 +47,7 @@
         </nav>
     </header>
     <div class="wrapper">
-        <main class="main">
-        <a>食材検索ページ</a>
-        
+        <main class="main"> 
         <form action="{% url 'food_search' %}" method="post">
             {% csrf_token %}
             <h3><p align="left">{{msg}}</p></h3>
