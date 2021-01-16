@@ -55,11 +55,11 @@
    <main class="main">
     <h3><p align="left">削除したい食材を複数選択可能です。</p></h3>
     {% for message in messages %}
-                    <li {% if message.tags %} class="{{ message.tags }}">
-                        {% endif %}
-                        {{ message }}
-                    </li>
-                    {% endfor %}
+        <msg {% if message.tags %} class="check-mark" class="{{ message.tags }}">
+            {% endif %}
+            {{ message }}
+        </msg>
+    {% endfor %}
     <form action="{% url 'food_delete'  %}" method="post">
         {% csrf_token %}
         <div class="scroll-table" data-intro="削除する食材を選択して" data-step="1">

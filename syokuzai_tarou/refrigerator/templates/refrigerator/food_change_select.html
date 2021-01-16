@@ -49,11 +49,11 @@
        <main class="main">
         <h3><p align="left">数量を変更したい食材を１つ選択してください。</p></h3>
             {% for message in messages %}
-                    <li {% if message.tags %} class="{{ message.tags }}">
-                        {% endif %}
-                        {{ message }}
-                    </li>
-                    {% endfor %}
+                <msg {% if message.tags %} class="check-mark" class="{{ message.tags }}">
+                    {% endif %}
+                    {{ message }}
+                </msg>
+            {% endfor %}
             <form action="{% url 'food_change_select'   %}" method="post">
                 {% csrf_token %}
                 <div class="scroll-table" data-intro="数量変更したい食材を選択して" data-step="1">

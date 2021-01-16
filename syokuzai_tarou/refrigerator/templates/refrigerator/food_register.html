@@ -56,12 +56,11 @@
     <div class="wrapper">
     <main class="main">
         {% for message in messages %}
-                    <li {% if message.tags %} class="{{ message.tags }}">
-                        {% endif %}
-                        {{ message }}
-                    </li>
-                    {% endfor %}
-
+            <msg {% if message.tags %} class="check-mark" class="{{ message.tags }}">
+                {% endif %}
+                {{ message }}
+            </msg>
+        {% endfor %}
             
             <form action="{% url 'food_register' %}" method="post">
                 {% csrf_token %}
