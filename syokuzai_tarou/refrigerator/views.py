@@ -235,8 +235,6 @@ def food_delete(request):
         'goto_recipe_select_text' : 'レシピ表示',
         'goto_delete' : 'food_delete',
         'goto_delete_text' : '食材削除',
-        #'goto_delete_refrigerator' : 'refrigerator',
-        #'goto_delete_refrigerator_text' : '食材削除',
         #checkbox
         'foods_form' : foodsform,
         'foods' : foods,

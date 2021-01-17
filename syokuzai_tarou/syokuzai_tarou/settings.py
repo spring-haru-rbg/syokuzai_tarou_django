@@ -109,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+#TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -131,4 +131,6 @@ LOGIN_REDIRECT_URL = 'refrigerator'
 # 下は追加するかどうか検討する
 LOGOUT_REDIRECT_URL = 'login'
 LANGUAGE_CODE = 'ja'
+
+TIME_ZONE = 'Asia/Tokyo'
 

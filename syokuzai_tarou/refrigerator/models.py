@@ -2,6 +2,7 @@ from django.db import models
 from accounts.models import CustomUser
 from django.core.validators import MinValueValidator
 from django.core.exceptions import ValidationError
+from django.utils import timezone
 
 
 # Create your models here.
@@ -25,6 +26,7 @@ class FoodSet(models.Model):
         verbose_name='賞味・消費期限',
         blank=True,
         null=True,
+        default=timezone.now
     )
     #foodGram = models.IntegerField(default=0,validators=[check_gram])#元のやつ
     foodGram = models.PositiveIntegerField(default=0,validators=[check_gram])#正の値か0
