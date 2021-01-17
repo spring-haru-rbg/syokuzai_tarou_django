@@ -14,6 +14,7 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 import re
+from django.contrib import messages
 
 # Create your views here.
 
@@ -79,53 +80,63 @@ def recipe(request):
         param1 = param1.replace('\'','')
         param = urllib.parse.quote(param1)
         url = 'https://erecipe.woman.excite.co.jp/search/'+param
-        #スクレイピング
-        response = urllib.request.urlopen(url)
-        html = response.read()
-        soup = BeautifulSoup(html)
 
-        # 全てのaタグを抽出
-        recipe = soup.find_all('a' ,class_='recipename')
+        #検索ページが空の時のエラー処理
+        get_url_info = requests.get(url)
+        status_code = get_url_info.status_code
+        
+        if (status_code==404):
+            messages.success(request, '該当するレシピがありませんでした。食材を変更し検索してください。')
+            return redirect(to='/recipe/recipe_select')
+        
+        else:
+            #スクレイピング
+            response = urllib.request.urlopen(url)
+            html = response.read()
+            soup = BeautifulSoup(html)
+            
+            # 全てのaタグを抽出
+            recipe = soup.find_all('a' ,class_='recipename')
     
-        links=[]
-        recipe_names=[]
-        for link in recipe:
-            url_link = 'https://erecipe.woman.excite.co.jp' + link.get('href')
-            links.append(url_link)
-            recipe_names.append(link.get_text())
+            links=[]
+            recipe_names=[]
+            for link in recipe:
+                url_link = 'https://erecipe.woman.excite.co.jp' + link.get('href')
+                links.append(url_link)
+                recipe_names.append(link.get_text())
 
 
-        #全てのdiv class＝"inner posrltv"を抽出
+            #全てのdiv class＝"inner posrltv"を抽出
 
-        recipe_image = []
-        images = soup.find_all('img', class_='thmb fl lazy')
-        for image in images:
-            recipe_image.append(image.get('data-src'))
-        link_list = zip(recipe_names,links,recipe_image)
+            recipe_image = []
+            images = soup.find_all('img', class_='thmb fl lazy')
+            for image in images:
+                recipe_image.append(image.get('data-src'))
+            link_list = zip(recipe_names,links,recipe_image)
     
 
-    params = {
-        'title' : 'レシピ検索結果表示',
-        'text' : 'レシピ検索結果表示ページ',
-        'goto_refrigerator' : 'refrigerator',
-        'goto_refrigerator_text' : '食材一覧',
-        'goto_register' : 'food_register',
-        'goto_register_text' : '食材登録',
-        'goto_change_select' : 'food_change_select',
-        'goto_change_select_text' : '食材変更',
-        'goto_search' : 'food_search',
-        'goto_search_text' : '食材検索',
-        'goto_recipe_select' : 'recipe_select',
-        'goto_recipe_select_text' : 'レシピ表示',
-        'goto_delete' : 'food_delete',
-        'goto_delete_text' : '食材削除',
-        'goto_recipe' : 'recipe',
-        'goto_recipe_text' : 'レシピ検索',
-        'goto_recipe_reselect' : 'recipe_select',
-        'goto_recipe_reselect_text' : 'レシピ検索し直す',
-        'links' : links,
-        'name' : recipe_names,
-        'link_list' : link_list,
-        'param1' : param1,
-    }
-    return render(request, 'recipe/recipe.html',params)
+        params = {
+            'title' : 'レシピ検索結果表示',
+            'text' : 'レシピ検索結果表示ページ',
+            'goto_refrigerator' : 'refrigerator',
+            'goto_refrigerator_text' : '食材一覧',
+            'goto_register' : 'food_register',
+            'goto_register_text' : '食材登録',
+            'goto_change_select' : 'food_change_select',
+            'goto_change_select_text' : '食材変更',
+            'goto_search' : 'food_search',
+            'goto_search_text' : '食材検索',
+            'goto_recipe_select' : 'recipe_select',
+            'goto_recipe_select_text' : 'レシピ表示',
+            'goto_delete' : 'food_delete',
+            'goto_delete_text' : '食材削除',
+            'goto_recipe' : 'recipe',
+            'goto_recipe_text' : 'レシピ検索',
+            'goto_recipe_reselect' : 'recipe_select',
+            'goto_recipe_reselect_text' : 'レシピ検索し直す',
+            'links' : links,
+            'name' : recipe_names,
+            'link_list' : link_list,
+            'param1' : param1,
+        }
+        return render(request, 'recipe/recipe.html',params)
