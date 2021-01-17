@@ -76,7 +76,7 @@ def food_register(request):
         refrigerator = Refrigerator.objects.create(user=request.user,foodset=foodset_field)
         refrigerator.save()
         # 登録完了メッセージ
-        messages.success(request, '食材登録しました。')
+        messages.success(request, '食材登録しました')
     return render(request, 'refrigerator/food_register.html',params)
 
 @login_required
@@ -132,7 +132,7 @@ def food_change(request,num):
         change_foods.save()
 
         # 削除完了メッセージ
-        messages.success(request, '食材変更しました。')
+        messages.success(request, '食材変更しました')
         return redirect(to='/refrigerator/food_change_select') 
 
     params = {
@@ -211,7 +211,7 @@ def food_delete(request):
         for field in foodsform:
             foodlist = zip(field,foods)
         # 削除完了メッセージ
-        messages.success(request, '食材削除しました。')
+        messages.success(request, '食材削除しました')
        # return redirect(to='refrigerator/food_delete')
             
     #GETアクセス時の処理

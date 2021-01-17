@@ -353,3 +353,22 @@ ul {
     display: table-row-group;
    /* margin-right: auto;*/
 }
+
+msg{
+    font-size: 1.5rem;
+  }
+msg.check-mark{
+    position:relative;
+	line-height:2em;
+	padding-left:3em;
+}
+msg.check-mark:before{
+    position:absolute;
+	left:0;
+	content:"";
+	display:inline-block;
+	width:2em;
+	height:2em;
+	background:url('../images/checkmark.png') no-repeat;
+	background-size:contain;
+}
