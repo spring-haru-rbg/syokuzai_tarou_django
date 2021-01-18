@@ -372,3 +372,29 @@ msg.check-mark:before{
 	background:url('../images/checkmark.png') no-repeat;
 	background-size:contain;
 }
+
+msg2{
+    font-size: 2.5em;
+}
+
+msg2.arrow-mark{
+    position:relative;
+    line-height:2em;
+    /*
+    text-indent:3em;
+    */
+    padding-left:2em;
+}
+msg2.arrow-mark:after{
+    /*
+    position:middle;
+    */
+    left:0;
+    
+	content:"";
+	display:inline-block;
+	width:2.5em;
+	height:2.5em;
+	background:url('../images/arrow_gray.png') no-repeat center;
+	background-size:contain;
+}
