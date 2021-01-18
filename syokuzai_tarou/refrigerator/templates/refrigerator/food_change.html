@@ -50,7 +50,12 @@
     <form action="{% url 'food_change'  id  %}" method="post">
         {% csrf_token %}
         <tr>
+            <!--
             <h2 data-intro="変更後の値を入力" data-step="1">数量　：{{foodset.foodGram}}ーー＞{{ form }}{{foodset.volume}}</h2></br>
+            -->
+            <msg2 data-intro="変更後の値を入力" data-step="1" class="arrow-mark">数量　：{{foodset.foodGram}}  </msg2>
+            <msg2> {{ form }}{{foodset.volume}} </msg2></br>
+            
         </tr>
         <input class="decorated-btn" type="submit" value="変更する" data-intro="このボタンを押して変更完了" data-step="2">
     </form>
